@@ -5,234 +5,241 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 Marketing — Budget Decision Sheet</title>
 <style>
+/* ═══════════════════════════════════════════════════════════
+   2026 Marketing Budget Decision Sheet — Corporate Theme
+   ═══════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
-  --clay:    #EA3934;
-  --purple:  #3A307F;
+  --clay:    #C0392B;
+  --purple:  #2C2468;
   --sand:    #FEBB90;
   --lav:     #B7B1DD;
-  --green:   #1A8A5A;
-  --light-green:  #f0faf4;
-  --light-purple: #f0f0fb;
-  --light-clay:   #fff0ef;
-  --bg:      #f2f2f7;
+  --green:   #1B7A50;
+  --light-green:  #EDF8F2;
+  --light-purple: #EEEDF6;
+  --light-clay:   #FDEEED;
+  --bg:      #F4F5F7;
   --card:    #ffffff;
-  --border:  #e8e8ee;
-  --text:    #1a1a2e;
-  --muted:   #888899;
-  --radius:  10px;
+  --border:  #DFE1E6;
+  --text:    #172B4D;
+  --muted:   #6B778C;
+  --radius:  6px;
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 13px; line-height: 1.5; }
 
-/* TOP BAR */
-.top-bar { background: var(--purple); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-.top-bar h1 { color: #fff; font-size: 16px; font-weight: 700; flex: 1; }
-.top-bar span { color: var(--lav); font-size: 11px; }
+/* ── TOP BAR ── */
+.top-bar { background: var(--purple); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.top-bar h1 { color: #fff; font-size: 15px; font-weight: 600; flex: 1; letter-spacing: -0.2px; }
+.top-bar span { color: rgba(255,255,255,0.55); font-size: 11px; font-weight: 500; }
 
-/* TAB NAV */
-.tab-nav { background: #fff; border-bottom: 2px solid var(--border); display: flex; padding: 0 22px; gap: 0; }
-.tab-btn { background: none; border: none; border-bottom: 3px solid transparent; padding: 13px 20px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; font-family: Arial; margin-bottom: -2px; transition: color 0.15s, border-color 0.15s; }
+/* ── TAB NAV ── */
+.tab-nav { background: #fff; border-bottom: 1px solid var(--border); display: flex; padding: 0 28px; gap: 0; }
+.tab-btn { background: none; border: none; border-bottom: 2px solid transparent; padding: 14px 22px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; font-family: var(--font); margin-bottom: -1px; transition: color 0.15s, border-color 0.15s; letter-spacing: -0.1px; }
 .tab-btn:hover { color: var(--text); }
 .tab-btn.active { color: var(--purple); border-bottom-color: var(--purple); }
 
-/* SUMMARY STRIP */
-.summary-strip { display: grid; grid-template-columns: repeat(5,1fr); background: #fff; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-/* Jan–Apr consumed box — visually locked/historical */
-.stat-box.consumed { background: #f0f0f5; border-right: 1px solid #ddd; }
-.stat-box.consumed .lbl { color: #aaa; }
-.stat-box.consumed .val { color: #777; font-size: 20px; }
-.stat-box.consumed .sub { color: #bbb; }
-.stat-box.consumed::after { content: 'SPENT'; font-size: 9px; font-weight: 800; letter-spacing: 1px; color: #bbb; display: block; margin-top: 3px; }
-.stat-box { padding: 14px 20px; border-right: 1px solid var(--border); }
+/* ── SUMMARY STRIP ── */
+.summary-strip { display: grid; grid-template-columns: repeat(5,1fr); background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(9,30,66,0.08); }
+.stat-box { padding: 16px 22px; border-right: 1px solid var(--border); }
 .stat-box:last-child { border-right: none; }
-.stat-box .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 2px; }
-.stat-box .val { font-size: 24px; font-weight: 700; line-height: 1.1; }
-.stat-box .sub { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.stat-box .lbl { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); margin-bottom: 4px; }
+.stat-box .val { font-size: 22px; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; }
+.stat-box .sub { font-size: 10px; color: var(--muted); margin-top: 4px; font-weight: 500; }
+/* Jan-Mar consumed box */
+.stat-box.consumed { background: #F8F9FA; border-right: 1px solid var(--border); }
+.stat-box.consumed .lbl { color: #97A0AF; }
+.stat-box.consumed .val { color: #7A869A; font-size: 20px; }
+.stat-box.consumed .sub { color: #B3BAC5; }
+.stat-box.consumed::after { content: 'HISTORICAL'; font-size: 8px; font-weight: 700; letter-spacing: 1.2px; color: #B3BAC5; display: block; margin-top: 4px; }
 .val.purple { color: var(--purple); } .val.green { color: var(--green); } .val.clay { color: var(--clay); }
 
-/* LAYOUT */
-.layout { display: grid; grid-template-columns: 1fr 340px; gap: 18px; padding: 18px 22px; max-width: 1200px; margin: 0 auto; }
+/* ── LAYOUT ── */
+.layout { display: grid; grid-template-columns: 1fr 340px; gap: 20px; padding: 24px 28px; max-width: 1220px; margin: 0 auto; }
 
-/* CARDS */
-.card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.05); overflow: hidden; margin-bottom: 16px; }
+/* ── CARDS ── */
+.card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 1px 2px rgba(9,30,66,0.04); overflow: hidden; margin-bottom: 18px; }
 .card:last-child { margin-bottom: 0; }
-.card-head { padding: 10px 16px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; border-bottom: 1px solid var(--border); }
-.card-head .note { color: var(--muted); font-weight: 400; margin-left: auto; text-transform: none; letter-spacing: 0; font-size: 11px; }
-.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.card-head { padding: 12px 18px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; border-bottom: 1px solid var(--border); background: #FAFBFC; color: var(--text); }
+.card-head .note { color: var(--muted); font-weight: 500; margin-left: auto; text-transform: none; letter-spacing: 0; font-size: 11px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 
-/* RESET BTN */
-.reset-btn-field { background: none; border: 1.5px solid var(--border); border-radius: 5px; width: 24px; height: 24px; cursor: pointer; font-size: 13px; color: var(--muted); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; padding: 0; }
+/* ── RESET BTN ── */
+.reset-btn-field { background: none; border: 1px solid var(--border); border-radius: 4px; width: 26px; height: 26px; cursor: pointer; font-size: 13px; color: var(--muted); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; padding: 0; }
 .reset-btn-field:hover { border-color: var(--clay); color: var(--clay); background: var(--light-clay); }
 
-/* LEVER */
-.lever { padding: 14px 16px; border-bottom: 1px solid #f5f5f8; transition: background 0.15s; }
+/* ── LEVERS ── */
+.lever { padding: 16px 18px; border-bottom: 1px solid #F4F5F7; transition: background 0.15s; }
 .lever:last-child { border-bottom: none; }
-.lever:hover { background: #fafafa; }
-.lever.active { background: #fffaf9; }
+.lever:hover { background: #FAFBFC; }
+.lever.active { background: #FFFBFA; border-left: 3px solid var(--clay); }
 .lever-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.rank-badge { width: 26px; height: 26px; border-radius: 50%; background: var(--clay); color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; opacity: 0.3; transition: opacity 0.2s; }
+.rank-badge { width: 24px; height: 24px; border-radius: 4px; background: var(--clay); color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; opacity: 0.25; transition: opacity 0.2s; }
 .lever.active .rank-badge { opacity: 1; }
-.lever-name { flex: 1; font-weight: 600; font-size: 13px; }
-.lever-name .sub { font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 1px; }
-.toggle { position: relative; display: inline-block; width: 40px; height: 22px; flex-shrink: 0; }
+.lever-name { flex: 1; font-weight: 600; font-size: 13px; color: var(--text); }
+.lever-name .sub { font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 2px; }
+.toggle { position: relative; display: inline-block; width: 36px; height: 20px; flex-shrink: 0; }
 .toggle input { opacity: 0; width: 0; height: 0; }
-.slider-sw { position: absolute; cursor: pointer; inset: 0; background: #ddd; border-radius: 22px; transition: 0.2s; }
-.slider-sw::before { content:''; position:absolute; width:16px; height:16px; left:3px; bottom:3px; background:#fff; border-radius:50%; transition:0.2s; }
+.slider-sw { position: absolute; cursor: pointer; inset: 0; background: #C1C7D0; border-radius: 20px; transition: 0.2s; }
+.slider-sw::before { content:''; position:absolute; width:14px; height:14px; left:3px; bottom:3px; background:#fff; border-radius:50%; transition:0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.12); }
 input:checked + .slider-sw { background: var(--clay); }
-input:checked + .slider-sw::before { transform: translateX(18px); }
+input:checked + .slider-sw::before { transform: translateX(16px); }
 .lever-controls { display: flex; align-items: center; gap: 8px; }
-.pct-slider { flex:1; -webkit-appearance:none; appearance:none; height:4px; border-radius:4px; background:#e0e0e8; outline:none; cursor:pointer; }
-.pct-slider::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:var(--clay); cursor:pointer; box-shadow:0 1px 4px rgba(0,0,0,0.2); }
-.pct-slider:disabled { opacity:0.3; cursor:default; }
-.pct-box { width:52px; padding:4px 6px; border:1.5px solid var(--border); border-radius:6px; font-size:13px; font-weight:700; text-align:right; font-family:Arial; outline:none; }
-.pct-box:focus { border-color:var(--clay); }
-.pct-box:disabled { background:#f5f5f5; color:#bbb; cursor:default; }
-.pct-unit { font-size:12px; color:var(--muted); font-weight:600; }
+.pct-slider { flex:1; -webkit-appearance:none; appearance:none; height:3px; border-radius:3px; background:#DFE1E6; outline:none; cursor:pointer; }
+.pct-slider::-webkit-slider-thumb { -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:var(--clay); cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.2); }
+.pct-slider:disabled { opacity:0.25; cursor:default; }
+.pct-box { width:52px; padding:5px 6px; border:1px solid var(--border); border-radius:4px; font-size:12px; font-weight:600; text-align:right; font-family:var(--font); outline:none; background:#fff; }
+.pct-box:focus { border-color:var(--clay); box-shadow: 0 0 0 2px rgba(192,57,43,0.12); }
+.pct-box:disabled { background:#F4F5F7; color:#B3BAC5; cursor:default; }
+.pct-unit { font-size:11px; color:var(--muted); font-weight:600; }
 .base-wrap { display:flex; align-items:center; gap:5px; margin-left:4px; }
-.base-lbl { font-size:10px; color:var(--muted); white-space:nowrap; }
-.base-input { width:105px; padding:4px 6px; border:1.5px solid var(--border); border-radius:6px; font-size:12px; font-weight:600; text-align:right; font-family:Arial; outline:none; background:#fffbe6; }
-.base-input:focus { border-color:#f0d060; }
-.base-input:disabled { background:#f5f5f5; color:#bbb; cursor:default; }
-.saving-chip { font-size:13px; font-weight:700; color:var(--clay); background:var(--light-clay); padding:3px 10px; border-radius:20px; white-space:nowrap; min-width:90px; text-align:right; opacity:0.3; transition:opacity 0.2s; }
+.base-lbl { font-size:10px; color:var(--muted); white-space:nowrap; font-weight:500; }
+.base-input { width:105px; padding:5px 6px; border:1px solid #E0D8A8; border-radius:4px; font-size:12px; font-weight:600; text-align:right; font-family:var(--font); outline:none; background:#FEFCE8; }
+.base-input:focus { border-color:#D4A017; box-shadow: 0 0 0 2px rgba(212,160,23,0.12); }
+.base-input:disabled { background:#F4F5F7; color:#B3BAC5; cursor:default; border-color:var(--border); }
+.saving-chip { font-size:12px; font-weight:700; color:var(--clay); background:var(--light-clay); padding:4px 12px; border-radius:4px; white-space:nowrap; min-width:90px; text-align:right; opacity:0.25; transition:opacity 0.2s; }
 .lever.active .saving-chip { opacity:1; }
 
-/* CONFIRMED */
-.conf-item { display:flex; align-items:center; gap:10px; padding:9px 16px; border-bottom:1px solid #f5f5f8; transition:background 0.15s; }
+/* ── CONFIRMED SAVINGS ── */
+.conf-item { display:flex; align-items:center; gap:10px; padding:10px 18px; border-bottom:1px solid #F4F5F7; transition:background 0.15s; }
 .conf-item:last-child { border-bottom:none; }
-.conf-item.inactive { background:#fafafa; opacity:0.5; }
-.conf-item .conf-name { flex:1; font-size:13px; }
+.conf-item.inactive { background:#FAFBFC; opacity:0.45; }
+.conf-item .conf-name { flex:1; font-size:13px; font-weight:500; color:var(--text); }
 .conf-toggle input:checked + .slider-sw { background:var(--green); }
-.conf-toggle .slider-sw { background:#ccc; }
-.conf-input { width:110px; padding:4px 8px; border:1.5px solid #d0eedd; border-radius:6px; font-size:13px; font-weight:700; text-align:right; font-family:Arial; outline:none; background:var(--light-green); color:var(--green); }
-.conf-input:focus { border-color:var(--green); }
-.conf-input:disabled { background:#f0f0f0; color:#bbb; border-color:var(--border); cursor:default; }
+.conf-toggle .slider-sw { background:#C1C7D0; }
+.conf-input { width:110px; padding:5px 8px; border:1px solid #B5D5C4; border-radius:4px; font-size:12px; font-weight:700; text-align:right; font-family:var(--font); outline:none; background:var(--light-green); color:var(--green); }
+.conf-input:focus { border-color:var(--green); box-shadow: 0 0 0 2px rgba(27,122,80,0.12); }
+.conf-input:disabled { background:#F4F5F7; color:#B3BAC5; border-color:var(--border); cursor:default; }
 
-/* BUDGET TABLE */
-.section-divider { padding:5px 16px 3px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); background:#f9f9fc; border-bottom:1px solid #f0f0f5; }
-.budget-item { display:flex; align-items:center; gap:8px; padding:8px 16px; border-bottom:1px solid #f5f5f8; }
+/* ── BUDGET TABLE ── */
+.section-divider { padding:6px 18px 4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--muted); background:#FAFBFC; border-bottom:1px solid #F0F1F4; }
+.budget-item { display:flex; align-items:center; gap:8px; padding:9px 18px; border-bottom:1px solid #F4F5F7; }
 .budget-item:last-child { border-bottom:none; }
-.budget-name { flex:1; font-size:13px; }
-.budget-input { width:120px; padding:4px 8px; border:1.5px solid var(--border); border-radius:6px; font-size:13px; font-weight:700; text-align:right; font-family:Arial; outline:none; background:#fffbe6; }
-.budget-input:focus { border-color:#f0d060; }
-.total-row-card { display:flex; align-items:center; justify-content:space-between; padding:11px 16px; background:#f5f5f8; font-weight:700; font-size:14px; border-top:2px solid var(--border); }
+.budget-name { flex:1; font-size:13px; font-weight:500; }
+.budget-input { width:120px; padding:5px 8px; border:1px solid #E0D8A8; border-radius:4px; font-size:12px; font-weight:700; text-align:right; font-family:var(--font); outline:none; background:#FEFCE8; }
+.budget-input:focus { border-color:#D4A017; box-shadow: 0 0 0 2px rgba(212,160,23,0.12); }
+.total-row-card { display:flex; align-items:center; justify-content:space-between; padding:12px 18px; background:#FAFBFC; font-weight:700; font-size:13px; border-top:2px solid var(--border); }
 
-/* RIGHT PANEL */
-.right { position:sticky; top:90px; align-self:start; display:flex; flex-direction:column; gap:14px; }
-.big-remaining { padding:16px; text-align:center; background:var(--light-purple); border-radius:var(--radius); border:1px solid var(--lav); }
-.big-remaining .lbl { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--purple); opacity:0.7; margin-bottom:4px; }
-.big-remaining .val { font-size:32px; font-weight:700; color:var(--purple); }
-.big-remaining .sub { font-size:11px; color:var(--purple); opacity:0.6; margin-top:3px; }
-.summary-card { background:var(--card); border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.05); }
-.summary-card-head { padding:12px 16px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; border-bottom:1px solid var(--border); color:var(--muted); }
-.summary-row { display:flex; align-items:center; justify-content:space-between; padding:8px 16px; font-size:13px; border-bottom:1px solid #f5f5f8; }
+/* ── RIGHT PANEL ── */
+.right { position:sticky; top:90px; align-self:start; display:flex; flex-direction:column; gap:16px; }
+.big-remaining { padding:20px; text-align:center; background:var(--light-purple); border-radius:var(--radius); border:1px solid #C8C3E0; }
+.big-remaining .lbl { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--purple); opacity:0.65; margin-bottom:6px; }
+.big-remaining .val { font-size:30px; font-weight:700; color:var(--purple); letter-spacing:-0.5px; font-variant-numeric:tabular-nums; }
+.big-remaining .sub { font-size:11px; color:var(--purple); opacity:0.55; margin-top:4px; font-weight:500; }
+.summary-card { background:var(--card); border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; box-shadow:0 1px 2px rgba(9,30,66,0.04); }
+.summary-card-head { padding:12px 18px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; border-bottom:1px solid var(--border); color:var(--muted); background:#FAFBFC; }
+.summary-row { display:flex; align-items:center; justify-content:space-between; padding:9px 18px; font-size:12.5px; border-bottom:1px solid #F4F5F7; }
 .summary-row:last-child { border-bottom:none; }
-.summary-row .r-lbl { color:var(--muted); }
+.summary-row .r-lbl { color:var(--muted); font-weight:500; }
 .summary-row .r-val { font-weight:700; font-variant-numeric:tabular-nums; }
-.bar-wrap { padding:14px 16px; }
-.bar-lbl { display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-bottom:6px; }
-.bar-track { height:10px; background:#e8e8ee; border-radius:10px; overflow:hidden; display:flex; }
+.bar-wrap { padding:16px 18px; }
+.bar-lbl { display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-bottom:8px; font-weight:500; }
+.bar-track { height:8px; background:#EBECF0; border-radius:4px; overflow:hidden; display:flex; }
 .bar-seg { height:100%; transition:width 0.3s ease; }
-.bar-legend { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
-.legend-item { display:flex; align-items:center; gap:4px; font-size:10px; color:var(--muted); }
-.legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.bar-legend { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+.legend-item { display:flex; align-items:center; gap:4px; font-size:10px; color:var(--muted); font-weight:500; }
+.legend-dot { width:8px; height:8px; border-radius:2px; flex-shrink:0; }
 .action-btns { display:flex; flex-direction:column; gap:8px; }
-.btn { border:none; border-radius:7px; padding:11px 16px; font-size:13px; font-weight:700; cursor:pointer; font-family:Arial; transition:opacity 0.15s; }
-.btn:hover { opacity:0.85; }
+.btn { border:none; border-radius:var(--radius); padding:10px 16px; font-size:12px; font-weight:600; cursor:pointer; font-family:var(--font); transition:all 0.15s; letter-spacing:-0.1px; }
+.btn:hover { opacity:0.88; }
 .btn-secondary { background:var(--light-clay); color:var(--clay); }
-.btn-ghost { background:#f0f0f5; color:var(--muted); }
-.btn-reset-all { background:#fff; color:var(--muted); border:1.5px solid var(--border); }
+.btn-ghost { background:#EBECF0; color:var(--muted); }
+.btn-reset-all { background:#fff; color:var(--muted); border:1px solid var(--border); }
 
 /* ── MONTHLY TAB ── */
-#tab-monthly { padding: 20px 22px 32px; max-width: 1300px; margin: 0 auto; }
+#tab-monthly { padding: 24px 28px 36px; max-width: 1320px; margin: 0 auto; }
 
-.view-toggle { display:flex; gap:8px; margin-bottom:14px; align-items:center; }
-.view-toggle span { font-size:12px; color:var(--muted); font-weight:600; margin-right:4px; }
-.vtab { background:#fff; border:1.5px solid var(--border); border-radius:7px; padding:7px 16px; font-size:13px; font-weight:600; color:var(--muted); cursor:pointer; font-family:Arial; transition:all 0.15s; }
+.view-toggle { display:flex; gap:6px; margin-bottom:16px; align-items:center; }
+.view-toggle span { font-size:11px; color:var(--muted); font-weight:600; margin-right:6px; text-transform:uppercase; letter-spacing:0.4px; }
+.vtab { background:#fff; border:1px solid var(--border); border-radius:4px; padding:7px 18px; font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; font-family:var(--font); transition:all 0.15s; }
 .vtab.active { background:var(--purple); color:#fff; border-color:var(--purple); }
 .vtab:hover:not(.active) { border-color:var(--purple); color:var(--purple); }
 
 /* Filter bar */
-.filter-bar { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:12px 16px; margin-bottom:14px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; box-shadow:0 1px 3px rgba(0,0,0,0.04); }
-.filter-group { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-.filter-group-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.7px; color:var(--muted); white-space:nowrap; margin-right:2px; }
-.filter-sep { width:1px; height:24px; background:var(--border); margin:0 4px; }
-.fchip { border:1.5px solid var(--border); border-radius:20px; padding:4px 12px; font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; font-family:Arial; background:#fff; transition:all 0.15s; white-space:nowrap; }
+.filter-bar { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:12px 18px; margin-bottom:14px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; box-shadow:0 1px 2px rgba(9,30,66,0.04); }
+.filter-group { display:flex; align-items:center; gap:5px; flex-wrap:wrap; }
+.filter-group-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted); white-space:nowrap; margin-right:2px; }
+.filter-sep { width:1px; height:24px; background:var(--border); margin:0 6px; }
+.fchip { border:1px solid var(--border); border-radius:4px; padding:4px 12px; font-size:11px; font-weight:600; color:var(--muted); cursor:pointer; font-family:var(--font); background:#fff; transition:all 0.15s; white-space:nowrap; }
 .fchip:hover { border-color:var(--purple); color:var(--purple); }
 .fchip.on  { border-color:var(--purple); background:var(--purple); color:#fff; }
 .fchip.on.clay { border-color:var(--clay); background:var(--clay); }
 .fchip.on.green { border-color:var(--green); background:var(--green); color:#fff; }
 
 /* Lever sync bar */
-.lever-sync-bar { display:flex; align-items:center; gap:10px; background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:10px 16px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.04); }
-.sync-mode-btn { border:1.5px solid var(--border); border-radius:7px; padding:5px 14px; font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; font-family:Arial; background:#fff; transition:all 0.15s; }
+.lever-sync-bar { display:flex; align-items:center; gap:10px; background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:10px 18px; margin-bottom:14px; box-shadow:0 1px 2px rgba(9,30,66,0.04); }
+.sync-mode-btn { border:1px solid var(--border); border-radius:4px; padding:6px 16px; font-size:11px; font-weight:600; color:var(--muted); cursor:pointer; font-family:var(--font); background:#fff; transition:all 0.15s; }
 .sync-mode-btn.active { border-color:var(--clay); background:var(--light-clay); color:var(--clay); }
-.lever-pill { font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; margin-left:auto; }
-.lever-pill.none  { background:#f0f0f5; color:var(--muted); }
+.lever-pill { font-size:10px; font-weight:700; padding:4px 12px; border-radius:4px; margin-left:auto; letter-spacing:0.2px; }
+.lever-pill.none  { background:#EBECF0; color:var(--muted); }
 .lever-pill.some  { background:var(--light-clay); color:var(--clay); }
 
 /* Monthly table */
-.monthly-card { background:#fff; border-radius:var(--radius); border:1px solid var(--border); box-shadow:0 1px 4px rgba(0,0,0,0.05); overflow:hidden; margin-bottom:16px; }
-.monthly-card-head { padding:11px 18px; font-size:12px; font-weight:700; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
-.monthly-table { width:100%; border-collapse:collapse; font-size:12.5px; }
-.monthly-table th { padding:8px 12px; text-align:right; background:#f5f5f8; font-size:11px; font-weight:700; color:var(--muted); border-bottom:2px solid var(--border); white-space:nowrap; }
-.monthly-table th:first-child { text-align:left; min-width:200px; }
-.monthly-table th.total-col { background:#ede8f8; color:var(--purple); }
-.monthly-table td { padding:8px 12px; text-align:right; border-bottom:1px solid #f5f5f8; font-variant-numeric:tabular-nums; white-space:nowrap; }
-.monthly-table td:first-child { text-align:left; font-weight:600; }
-.monthly-table tr:hover td { background:#fafafa; }
-.monthly-table tr.total-row td { font-weight:700; background:#f0f0fb; color:var(--purple); border-top:2px solid var(--lav); }
-.monthly-table tr.savings-row td { font-size:11px; color:var(--green); background:var(--light-green); border-top:1px dashed #9ad4b8; font-style:italic; }
+.monthly-card { background:#fff; border-radius:var(--radius); border:1px solid var(--border); box-shadow:0 1px 2px rgba(9,30,66,0.04); overflow:hidden; margin-bottom:18px; }
+.monthly-card-head { padding:12px 20px; font-size:12px; font-weight:700; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; background:#FAFBFC; color:var(--text); }
+.monthly-table { width:100%; border-collapse:collapse; font-size:12px; }
+.monthly-table th { padding:9px 12px; text-align:right; background:#F4F5F7; font-size:10px; font-weight:700; color:var(--muted); border-bottom:1px solid var(--border); white-space:nowrap; text-transform:uppercase; letter-spacing:0.4px; }
+.monthly-table th:first-child { text-align:left; min-width:200px; text-transform:none; letter-spacing:0; }
+.monthly-table th.total-col { background:#EEEDF6; color:var(--purple); }
+.monthly-table td { padding:8px 12px; text-align:right; border-bottom:1px solid #F4F5F7; font-variant-numeric:tabular-nums; white-space:nowrap; font-weight:400; }
+.monthly-table td:first-child { text-align:left; font-weight:600; font-size:12px; }
+.monthly-table tr:hover td { background:#FAFBFC; }
+.monthly-table tr.total-row td { font-weight:700; background:var(--light-purple); color:var(--purple); border-top:2px solid #C8C3E0; font-size:12px; }
+.monthly-table tr.savings-row td { font-size:11px; color:var(--green); background:var(--light-green); border-top:1px dashed #9AD4B8; font-style:italic; }
 .monthly-table tr.savings-row td:first-child { font-style:normal; font-weight:600; }
-.monthly-table tr.market-header td { background:var(--light-purple); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--purple); padding:7px 12px; border-top:2px solid var(--lav); }
-.monthly-table tr.market-subtotal td { background:#e8e4f5; font-weight:700; color:var(--purple); border-top:1px solid var(--lav); font-size:12.5px; }
-.monthly-table td.indented { padding-left:22px; }
+.monthly-table tr.market-header td { background:#EEEDF6; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--purple); padding:8px 12px; border-top:2px solid #C8C3E0; }
+.monthly-table tr.market-subtotal td { background:#E4E1F0; font-weight:700; color:var(--purple); border-top:1px solid #C8C3E0; font-size:12px; }
+.monthly-table td.indented { padding-left:24px; }
 
 /* Cell states */
-.cell-cut    { color:#bbb; background:#fafafa !important; }
-.cell-lever  { color:#b06000; background:#fff8e8 !important; }
+.cell-cut    { color:#B3BAC5; background:#FAFBFC !important; }
+.cell-lever  { color:#8B6914; background:#FEF9EF !important; }
 .cell-active { color:var(--text); }
-.cell-total  { font-weight:700; color:var(--purple); background:#ede8f8 !important; }
-.cell-reduced  { color:var(--clay) !important; background:#fff0ef !important; font-weight:700; }
+.cell-total  { font-weight:700; color:var(--purple); background:#EEEDF6 !important; }
+.cell-reduced  { color:var(--clay) !important; background:var(--light-clay) !important; font-weight:700; }
 .cell-restored { color:var(--green) !important; background:var(--light-green) !important; font-weight:700; }
 
 /* Legend */
-.monthly-legend { display:flex; gap:20px; padding:10px 18px; background:#fafafa; border-top:1px solid var(--border); flex-wrap:wrap; }
-.ml-item { display:flex; align-items:center; gap:6px; font-size:11px; color:var(--muted); }
-.ml-swatch { width:12px; height:12px; border-radius:3px; flex-shrink:0; }
+.monthly-legend { display:flex; gap:20px; padding:10px 20px; background:#FAFBFC; border-top:1px solid var(--border); flex-wrap:wrap; }
+.ml-item { display:flex; align-items:center; gap:6px; font-size:10px; color:var(--muted); font-weight:500; }
+.ml-swatch { width:12px; height:12px; border-radius:2px; flex-shrink:0; }
 
 /* Export bar */
 .export-bar { display:flex; gap:8px; align-items:center; margin-bottom:14px; }
-.export-btn { display:inline-flex; align-items:center; gap:6px; border:1.5px solid var(--border); border-radius:7px; padding:7px 16px; font-size:12px; font-weight:600; color:var(--purple); cursor:pointer; font-family:Arial; background:#fff; transition:all 0.15s; }
+.export-btn { display:inline-flex; align-items:center; gap:6px; border:1px solid var(--border); border-radius:4px; padding:7px 18px; font-size:11px; font-weight:600; color:var(--purple); cursor:pointer; font-family:var(--font); background:#fff; transition:all 0.15s; }
 .export-btn:hover { border-color:var(--purple); background:var(--light-purple); }
 .export-btn svg { width:14px; height:14px; }
 
 /* ── OWNER SECTIONS ── */
-.owner-header { display:flex; align-items:center; gap:10px; padding:10px 0 6px; margin-top:22px; }
+.owner-header { display:flex; align-items:center; gap:10px; padding:12px 0 8px; margin-top:24px; }
 .owner-header:first-child { margin-top:0; }
-.owner-badge { display:inline-flex; align-items:center; padding:3px 12px; border-radius:20px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; flex-shrink:0; }
-.badge-ahmed { background:var(--light-clay); color:var(--clay); border:1px solid rgba(234,57,52,0.3); }
-.badge-mike  { background:var(--light-purple); color:var(--purple); border:1px solid rgba(58,48,127,0.3); }
-.badge-alex  { background:var(--light-green); color:var(--green); border:1px solid rgba(26,138,90,0.3); }
+.owner-badge { display:inline-flex; align-items:center; padding:4px 12px; border-radius:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; flex-shrink:0; }
+.badge-ahmed { background:var(--light-clay); color:var(--clay); border:1px solid rgba(192,57,43,0.2); }
+.badge-mike  { background:var(--light-purple); color:var(--purple); border:1px solid rgba(44,36,104,0.2); }
+.badge-alex  { background:var(--light-green); color:var(--green); border:1px solid rgba(27,122,80,0.2); }
 .owner-title { font-size:13px; font-weight:700; color:var(--text); }
-.owner-desc  { font-size:11px; color:var(--muted); margin-left:auto; }
+.owner-desc  { font-size:11px; color:var(--muted); margin-left:auto; font-weight:500; }
 
-/* Jan-Apr consumed row in Mike/Alex sections */
-.jan-apr-row { display:flex; align-items:center; gap:8px; padding:10px 16px; background:#f5f5f8; border-top:1px dashed var(--border); }
-.jan-apr-lbl { flex:1; font-size:12px; color:var(--muted); }
-.jan-apr-input { width:120px; padding:4px 8px; border:1.5px solid #ccc; border-radius:6px; font-size:13px; font-weight:700; text-align:right; font-family:Arial; outline:none; background:#ebebf0; color:#555; }
-.jan-apr-input:focus { border-color:var(--purple); background:#fff; color:var(--text); }
+/* Jan-Mar consumed row in Mike/Alex sections */
+.jan-apr-row { display:flex; align-items:center; gap:8px; padding:10px 18px; background:#F8F9FA; border-top:1px dashed var(--border); }
+.jan-apr-lbl { flex:1; font-size:11px; color:var(--muted); font-weight:500; }
+.jan-apr-input { width:120px; padding:5px 8px; border:1px solid #C1C7D0; border-radius:4px; font-size:12px; font-weight:700; text-align:right; font-family:var(--font); outline:none; background:#EBECF0; color:#505F79; }
+.jan-apr-input:focus { border-color:var(--purple); background:#fff; color:var(--text); box-shadow: 0 0 0 2px rgba(44,36,104,0.12); }
 
 /* Owner summary rows in right panel */
-.owner-sub-row { display:flex; align-items:center; justify-content:space-between; padding:6px 16px 6px 28px; font-size:11px; border-bottom:1px solid #f5f5f8; }
+.owner-sub-row { display:flex; align-items:center; justify-content:space-between; padding:7px 18px 7px 30px; font-size:11px; border-bottom:1px solid #F4F5F7; }
 
 /* Before-cuts breakdown mini table */
-.bc-section-hdr { padding:5px 16px 4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eaeaf5; }
-.bc-market-hdr  { padding:3px 16px 2px 24px; font-size:10px; font-weight:700; color:var(--muted); border-bottom:1px dashed #eee; display:flex; justify-content:space-between; }
-.bc-line        { padding:2px 16px 2px 36px; font-size:11px; display:flex; justify-content:space-between; border-bottom:1px solid #fafafa; color:var(--muted); }
+.bc-section-hdr { padding:6px 18px 5px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #E4E6EB; }
+.bc-market-hdr  { padding:4px 18px 3px 26px; font-size:10px; font-weight:700; color:var(--muted); border-bottom:1px dashed #EBECF0; display:flex; justify-content:space-between; }
+.bc-line        { padding:3px 18px 3px 38px; font-size:11px; display:flex; justify-content:space-between; border-bottom:1px solid #FAFBFC; color:var(--muted); }
 .bc-line strong { color:var(--text); font-weight:600; }
-.bc-subtotal    { padding:3px 16px 3px 24px; font-size:11px; font-weight:700; display:flex; justify-content:space-between; background:#f0f0f8; border-bottom:1px solid #e0e0ef; }
-.bc-saving-row  { padding:6px 16px; display:flex; justify-content:space-between; align-items:center; background:var(--light-green); border-top:1px solid #9ad4b8; font-size:12px; }
-.bc-warn-row    { padding:5px 16px; font-size:11px; background:#fffbe6; border-top:1px dashed #f0c060; color:#a06000; display:flex; justify-content:space-between; align-items:center; }
+.bc-subtotal    { padding:4px 18px 4px 26px; font-size:11px; font-weight:700; display:flex; justify-content:space-between; background:#F4F5F7; border-bottom:1px solid #DFE1E6; }
+.bc-saving-row  { padding:7px 18px; display:flex; justify-content:space-between; align-items:center; background:var(--light-green); border-top:1px solid #9AD4B8; font-size:12px; }
+.bc-warn-row    { padding:6px 18px; font-size:11px; background:#FEFCE8; border-top:1px dashed #E0D8A8; color:#8B6914; display:flex; justify-content:space-between; align-items:center; }
 </style>
 </head>
 <body>
@@ -336,7 +343,7 @@ input:checked + .slider-sw::before { transform: translateX(18px); }
   <!-- CONFIRMED CUTS -->
   <div class="card">
     <div class="card-head"><div class="dot" style="background:var(--green)"></div>Confirmed Savings<span class="note">Toggle off to un-confirm · edit amount · ↺ reset</span></div>
-    <div style="padding:7px 14px;background:#f5fbf7;border-bottom:1px solid #d4edde;font-size:11px;color:var(--green)"><strong>Apr–Dec Growth baseline:</strong> Performance + App fully spent · OOH cancelled · Spafax final payment in April only · Digital Branding cancelled (Q2 below; Q3–Q4 via levers 1 &amp; 5)</div>
+    <div style="padding:8px 18px;background:var(--light-green);border-bottom:1px solid #A8D5BE;font-size:11px;color:var(--green);font-weight:500"><strong>Apr–Dec Growth baseline:</strong> Performance + App fully spent · OOH cancelled · Spafax final payment in April only · Digital Branding cancelled (Q2 below; Q3–Q4 via levers 1 &amp; 5)</div>
     <div class="conf-item" id="ci1"><label class="toggle conf-toggle"><input type="checkbox" id="ci1-cb" checked onchange="confToggle(1)"><span class="slider-sw"></span></label><div class="conf-name">March war-period savings</div><input class="conf-input editable-dollar" id="c1" value="1009734" oninput="recalc()" onfocus="stripFmt(this)" onblur="fmtInput(this)"><button class="reset-btn-field" onclick="resetFields(['c1'])">↺</button></div>
     <div class="conf-item" id="ci2"><label class="toggle conf-toggle"><input type="checkbox" id="ci2-cb" checked onchange="confToggle(2)"><span class="slider-sw"></span></label><div class="conf-name">Spafax / Emirates cancellation — May–Dec (1 final payment in April · 8 months saved)</div><input class="conf-input editable-dollar" id="c2" value="1504720" oninput="recalc()" onfocus="stripFmt(this)" onblur="fmtInput(this)"><button class="reset-btn-field" onclick="resetFields(['c2'])">↺</button></div>
     <div class="conf-item" id="ci3"><label class="toggle conf-toggle"><input type="checkbox" id="ci3-cb" checked onchange="confToggle(3)"><span class="slider-sw"></span></label><div class="conf-name">UAE Offline Branding — fully cancelled Apr–Dec</div><input class="conf-input editable-dollar" id="c3" value="2617448" oninput="recalc()" onfocus="stripFmt(this)" onblur="fmtInput(this)"><button class="reset-btn-field" onclick="resetFields(['c3'])">↺</button></div>
@@ -527,10 +534,10 @@ input:checked + .slider-sw::before { transform: translateX(18px); }
       </div>
     </div>
     <div class="monthly-card">
-      <div class="monthly-card-head"><div class="dot" style="background:var(--purple)"></div>Planned Monthly Spend by Country — April through December 2026<span style="margin-left:auto;font-size:11px;color:var(--muted);font-weight:400">May–Dec planned spend shown below · April spend as per confirmed savings above (Performance + App only)</span></div>
+      <div class="monthly-card-head"><div class="dot" style="background:var(--purple)"></div>Planned Monthly Spend by Country — April through December 2026<span style="margin-left:auto;font-size:11px;color:var(--muted);font-weight:400">Apr–Dec planned spend shown below · all channels included</span></div>
       <table class="monthly-table" id="country-table">
         <thead><tr>
-          <th>Country</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th class="total-col">May–Dec Total</th>
+          <th>Country</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th class="total-col">Apr–Dec Total</th>
         </tr></thead>
         <tbody id="country-tbody"></tbody>
       </table>
@@ -585,7 +592,7 @@ input:checked + .slider-sw::before { transform: translateX(18px); }
       <div class="monthly-card-head"><div class="dot" style="background:var(--clay)"></div>Full Marketing Group — Planned Monthly Spend by Channel — May through December 2026<span style="margin-left:auto;font-size:11px;color:var(--muted);font-weight:400">Growth + B2B/PR + Social/Creative · All teams</span></div>
       <table class="monthly-table" id="channel-table">
         <thead><tr>
-          <th>Channel / Market</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th class="total-col">May–Dec Total</th>
+          <th>Channel / Market</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th class="total-col">Apr–Dec Total</th>
         </tr></thead>
         <tbody id="channel-tbody"></tbody>
       </table>
@@ -606,7 +613,7 @@ input:checked + .slider-sw::before { transform: translateX(18px); }
 <!--  TAB 3 — EXECUTIVE SUMMARY                            -->
 <!-- ══════════════════════════════════════════════════════ -->
 <div id="tab-summary" style="display:none">
-<div style="padding:28px 28px 48px; max-width:1060px; margin:0 auto; font-family:Arial,sans-serif;">
+<div style="padding:28px 28px 48px; max-width:1060px; margin:0 auto;">
 
   <!-- Page title -->
   <div style="margin-bottom:28px">
@@ -615,46 +622,46 @@ input:checked + .slider-sw::before { transform: translateX(18px); }
   </div>
 
   <!-- Headline numbers row -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:30px">
-    <div style="background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:18px 16px">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--muted);margin-bottom:6px">Full Year Budget</div>
-      <div style="font-size:24px;font-weight:700;color:var(--purple)" id="es-budget">—</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">All teams · all markets · 2026</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px">
+    <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px 18px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--muted);margin-bottom:6px">Full Year Budget</div>
+      <div style="font-size:22px;font-weight:700;color:var(--purple);letter-spacing:-0.5px" id="es-budget">—</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:5px;font-weight:500">All teams · all markets · 2026</div>
     </div>
-    <div style="background:#f8f8fa;border:1.5px solid var(--border);border-radius:10px;padding:18px 16px">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--muted);margin-bottom:6px">Already Spent (Jan–Mar)</div>
-      <div style="font-size:24px;font-weight:700;color:#555" id="es-consumed">—</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">Historical · cannot be recovered</div>
+    <div style="background:#F8F9FA;border:1px solid var(--border);border-radius:6px;padding:20px 18px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#97A0AF;margin-bottom:6px">Already Spent (Jan-Mar)</div>
+      <div style="font-size:22px;font-weight:700;color:#7A869A;letter-spacing:-0.5px" id="es-consumed">—</div>
+      <div style="font-size:10px;color:#B3BAC5;margin-top:5px;font-weight:500">Historical · cannot be recovered</div>
     </div>
-    <div style="background:var(--light-green);border:1.5px solid #9ad4b8;border-radius:10px;padding:18px 16px">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--green);margin-bottom:6px">Confirmed Savings</div>
-      <div style="font-size:24px;font-weight:700;color:var(--green)" id="es-confirmed">—</div>
-      <div style="font-size:11px;color:var(--green);opacity:0.75;margin-top:4px">Committed cuts across all teams</div>
+    <div style="background:var(--light-green);border:1px solid #A8D5BE;border-radius:6px;padding:20px 18px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--green);margin-bottom:6px">Confirmed Savings</div>
+      <div style="font-size:22px;font-weight:700;color:var(--green);letter-spacing:-0.5px" id="es-confirmed">—</div>
+      <div style="font-size:10px;color:var(--green);opacity:0.65;margin-top:5px;font-weight:500">Committed cuts across all teams</div>
     </div>
-    <div style="background:var(--light-clay);border:1.5px solid #f4ada7;border-radius:10px;padding:18px 16px">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--clay);margin-bottom:6px">Target Saving Selected</div>
-      <div style="font-size:24px;font-weight:700;color:var(--clay)" id="es-levers">—</div>
-      <div style="font-size:11px;color:var(--clay);opacity:0.75;margin-top:4px">Confirmed + active levers · live total</div>
+    <div style="background:var(--light-clay);border:1px solid #E8B4B0;border-radius:6px;padding:20px 18px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--clay);margin-bottom:6px">Target Saving Selected</div>
+      <div style="font-size:22px;font-weight:700;color:var(--clay);letter-spacing:-0.5px" id="es-levers">—</div>
+      <div style="font-size:10px;color:var(--clay);opacity:0.65;margin-top:5px;font-weight:500">Confirmed + active levers · live total</div>
     </div>
   </div>
 
   <!-- Progress bar toward $9.4M target -->
-  <div style="background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:28px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-      <div style="font-size:14px;font-weight:700;color:var(--purple)">2026 Savings Plan — Progress toward $9.4M</div>
-      <div style="font-size:12px;color:var(--muted)">Full year 2026 · all teams combined · toggle levers to model different scenarios</div>
+  <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:22px 24px;margin-bottom:28px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div style="font-size:14px;font-weight:700;color:var(--purple);letter-spacing:-0.2px">2026 Savings Plan — Progress toward $9.4M</div>
+      <div style="font-size:11px;color:var(--muted);font-weight:500">All teams combined · toggle levers to model scenarios</div>
     </div>
-    <div style="background:#eee;border-radius:6px;height:18px;overflow:hidden;position:relative">
-      <div id="es-progress-bar" style="background:linear-gradient(90deg,var(--green),#2ecc8a);height:100%;border-radius:6px;transition:width 0.4s;width:0%"></div>
+    <div style="background:#EBECF0;border-radius:4px;height:14px;overflow:hidden;position:relative">
+      <div id="es-progress-bar" style="background:linear-gradient(90deg,var(--green),#34B87A);height:100%;border-radius:4px;transition:width 0.4s;width:0%"></div>
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:8px">
-      <div style="font-size:12px;color:var(--green);font-weight:700" id="es-progress-lbl">Calculating…</div>
-      <div style="font-size:12px;color:var(--muted)">Recommended level: $9.4M · adjust levers to reach it</div>
+    <div style="display:flex;justify-content:space-between;margin-top:10px">
+      <div style="font-size:12px;color:var(--green);font-weight:700" id="es-progress-lbl">Calculating...</div>
+      <div style="font-size:11px;color:var(--muted);font-weight:500">Target: $9.4M</div>
     </div>
   </div>
 
   <!-- Ownership table -->
-  <div style="background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:28px">
+  <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px 22px;margin-bottom:28px">
     <div style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:14px">Team Ownership &amp; Budget Summary</div>
     <table style="width:100%;border-collapse:collapse;font-size:13px">
       <thead>
@@ -696,12 +703,12 @@ input:checked + .slider-sw::before { transform: translateX(18px); }
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px">
 
     <!-- How to use this dashboard -->
-    <div style="background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:20px 22px">
+    <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px 22px">
       <div style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:14px">How to use this dashboard</div>
       <div style="display:flex;flex-direction:column;gap:12px;font-size:13px;color:var(--text)">
-        <div style="display:flex;gap:10px"><div style="background:var(--purple);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">1</div><div><strong>Executive Summary</strong> (this tab) — start here for the big picture. All numbers update live as you make decisions.</div></div>
-        <div style="display:flex;gap:10px"><div style="background:var(--purple);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">2</div><div><strong>Decision Sheet</strong> — toggle confirmed savings on/off and activate optional levers to model different scenarios. Every change updates instantly.</div></div>
-        <div style="display:flex;gap:10px"><div style="background:var(--purple);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">3</div><div><strong>Monthly Breakdown</strong> — see how the Apr–Dec budget is distributed month by month, by country or channel. April spend reflects confirmed decisions (Performance + App only).</div></div>
+        <div style="display:flex;gap:10px"><div style="background:var(--purple);color:#fff;border-radius:4px;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">1</div><div><strong>Executive Summary</strong> (this tab) — start here for the big picture. All numbers update live as you make decisions.</div></div>
+        <div style="display:flex;gap:10px"><div style="background:var(--purple);color:#fff;border-radius:4px;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">2</div><div><strong>Decision Sheet</strong> — toggle confirmed savings on/off and activate optional levers to model different scenarios. Every change updates instantly.</div></div>
+        <div style="display:flex;gap:10px"><div style="background:var(--purple);color:#fff;border-radius:4px;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">3</div><div><strong>Monthly Breakdown</strong> — see how the Apr–Dec budget is distributed month by month, by country or channel. April spend reflects confirmed decisions (Performance + App only).</div></div>
         <div style="margin-top:4px;padding:12px;background:var(--light-green);border-radius:7px;border:1px solid #9ad4b8;font-size:12px;color:var(--green)">
           <strong>The team's 2026 savings plan targets $9.4M.</strong> Confirmed cuts already secure the majority of this. Activating all six Growth Marketing levers — and pushing the Qatar/Bahrain and Performance sliders upward — achieves the full recommended level.
         </div>
@@ -709,7 +716,7 @@ input:checked + .slider-sw::before { transform: translateX(18px); }
     </div>
 
     <!-- Key terms glossary -->
-    <div style="background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:20px 22px">
+    <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px 22px">
       <div style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:14px">Key Terms &amp; Definitions</div>
       <table style="width:100%;border-collapse:collapse;font-size:12px">
         <tbody>
@@ -743,7 +750,7 @@ input:checked + .slider-sw::before { transform: translateX(18px); }
   </div>
 
   <!-- Finance alignment note -->
-  <div style="background:#f8f0ff;border:1.5px solid #c9b8e8;border-radius:10px;padding:16px 20px;font-size:12px;color:#4a3a7a">
+  <div style="background:#F5F0FA;border:1px solid #C8C3E0;border-radius:6px;padding:18px 22px;font-size:12px;color:#3D3168;line-height:1.6">
     <strong>Data notes:</strong> Growth Marketing (Performance, App) is assumed fully spent Apr–Dec. OOH, Spafax (from May), and Digital Branding are confirmed cancelled and reflected in confirmed savings. Spafax/Emirates, Creative Agency, Survey, B2B, PR, and Social/Content budget figures are sourced from the latest aligned marketing plan. Jan–Mar savings of $1.28M are included in the confirmed savings total.
   </div>
 
@@ -777,104 +784,104 @@ const DEFAULTS = {
   'ac1':563143,'ac2':0,'ac3':32500,
 };
 
-// Monthly planned spend May–Dec (8 months)
-// UAE: remaining = annual – Q1 actuals – April estimate
-// Digital Brand: Q2 ($0 confirmed cut May–Jun), Q3 ($448,172 ÷ 3), Q4 ($465,223 ÷ 3)
+// Monthly planned spend Apr–Dec (9 months)
+// UAE: remaining = annual – Q1 actuals
+// Digital Brand: Apr–Jun ($0 confirmed cut), Q3 ($448,172 / 3), Q4 ($465,223 / 3)
 // Non-UAE channel splits are ESTIMATED (market totals are accurate; per-channel split is approximate)
 const MONTHLY_DATA = {
-  months: ['May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+  months: ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
   channels: [
     // ── UAE ──────────────────────────────────────────────────────────────────
     { id:'uae_perf',  chanType:'performance',   market:'UAE', owner:'growth',
       label:'Performance Marketing',
-      vals:[1035390,1035390,1035390,1035390,1035390,1035390,1035390,1035389],
+      vals:[1016931,1035390,1035390,1035390,1035390,1035390,1035390,1035390,1035389],
       type:'active',    leverNote:'Levers #4 (Criteo/RTB) · #6 (Core Buy)' },
     { id:'uae_app',   chanType:'app',           market:'UAE', owner:'growth',
       label:'App Acquisition',
-      vals:[177660,177660,177660,177660,177660,177660,177660,177660],
+      vals:[185000,177660,177660,177660,177660,177660,177660,177660,177660],
       type:'active',    leverNote:'' },
     { id:'uae_dbrand',chanType:'digital_brand', market:'UAE', owner:'growth',
       label:'Digital Branding',
-      vals:[0,0,149391,149391,149390,155074,155074,155075],
+      vals:[0,0,0,149391,149391,149390,155074,155074,155075],
       type:'mixed',     leverNote:'Jul–Sep: Lever #1 · Oct–Dec: Lever #5' },
     { id:'uae_offline',chanType:'offline',      market:'UAE', owner:'growth',
       label:'Offline Branding',
-      vals:[0,0,0,0,0,0,0,0],
+      vals:[0,0,0,0,0,0,0,0,0],
       type:'cancelled', leverNote:'Fully cancelled Apr–Dec' },
     { id:'uae_mf',    chanType:'mf',            market:'UAE', owner:'growth',
       label:'Mortgage Finder',
-      vals:[33616,33616,33616,33616,33616,33616,33616,33615],
+      vals:[30736,33616,33616,33616,33616,33616,33616,33616,33615],
       type:'active',    leverNote:'' },
     { id:'uae_np',    chanType:'np',            market:'UAE', owner:'growth',
       label:'Primary / New Projects',
-      vals:[34196,34196,34196,34196,34196,34196,34196,34199],
+      vals:[37000,34196,34196,34196,34196,34196,34196,34196,34199],
       type:'active',    leverNote:'' },
     // ── Egypt ── (~75% Perf / ~25% App — channel split estimated)
     { id:'egy_perf',  chanType:'performance',   market:'Egypt', owner:'growth',
       label:'Performance Marketing',
-      vals:[238067,238067,238067,238067,238067,238067,238067,238068],
+      vals:[244000,238067,238067,238067,238067,238067,238067,238067,238068],
       type:'active',    leverNote:'~75% of Egypt total — estimated' },
     { id:'egy_app',   chanType:'app',           market:'Egypt', owner:'growth',
       label:'App Acquisition',
-      vals:[79356,79356,79356,79356,79356,79356,79356,79356],
+      vals:[61000,79356,79356,79356,79356,79356,79356,79356,79356],
       type:'active',    leverNote:'~25% of Egypt total — estimated' },
     // ── Qatar ── (~70% Perf / ~30% App — digital brand confirmed cancelled)
     { id:'qat_perf',  chanType:'performance',   market:'Qatar', owner:'growth',
       label:'Performance Marketing',
-      vals:[38457,38457,38457,38457,38457,38457,38457,38458],
+      vals:[40248,38457,38457,38457,38457,38457,38457,38457,38458],
       type:'active',    leverNote:'Subject to Lever #3 · ~70% est.' },
     { id:'qat_app',   chanType:'app',           market:'Qatar', owner:'growth',
       label:'App Acquisition',
-      vals:[16482,16482,16482,16482,16482,16482,16482,16482],
+      vals:[8363,16482,16482,16482,16482,16482,16482,16482,16482],
       type:'active',    leverNote:'Subject to Lever #3 · ~30% est.' },
     // ── Bahrain ── (~70% Perf / ~30% App — channel split estimated)
     { id:'bhr_perf',  chanType:'performance',   market:'Bahrain', owner:'growth',
       label:'Performance Marketing',
-      vals:[48122,48122,48122,48122,48122,48122,48122,48122],
+      vals:[47213,48122,48122,48122,48122,48122,48122,48122,48122],
       type:'active',    leverNote:'Subject to Lever #3 · ~70% est.' },
     { id:'bhr_app',   chanType:'app',           market:'Bahrain', owner:'growth',
       label:'App Acquisition',
-      vals:[20623,20623,20623,20623,20623,20623,20623,20623],
+      vals:[15738,20623,20623,20623,20623,20623,20623,20623,20623],
       type:'active',    leverNote:'Subject to Lever #3 · ~30% est.' },
     // ── KSA ── (~90% Perf / ~10% App — exit candidate, Lever #2)
     { id:'ksa_perf',  chanType:'performance',   market:'KSA', owner:'growth',
       label:'Performance Marketing',
-      vals:[16882,16882,16882,16882,16882,16882,16882,16886],
+      vals:[19200,16882,16882,16882,16882,16882,16882,16882,16886],
       type:'active',    leverNote:'Subject to Lever #2 (exit) · ~90% est.' },
     { id:'ksa_app',   chanType:'app',           market:'KSA', owner:'growth',
       label:'App Acquisition',
-      vals:[1876,1876,1876,1876,1876,1876,1876,1876],
+      vals:[0,1876,1876,1876,1876,1876,1876,1876,1876],
       type:'active',    leverNote:'Subject to Lever #2 (exit) · ~10% est.' },
     // ── UAE Spafax ── (base = $0 because c2 confirmed cancelled; restored when c2 un-confirmed)
     { id:'uae_spafax', chanType:'spafax',       market:'UAE', owner:'growth',
       label:'Spafax / Emirates',
-      vals:[0,0,0,0,0,0,0,0],
+      vals:[0,0,0,0,0,0,0,0,0],
       type:'cancelled', leverNote:'Cancelled (c2) — toggle c2 off to restore spend' },
     // ── Qatar Digital Branding ── (base = $0 because c5 confirmed cancelled; restored when c5 un-confirmed)
     { id:'qat_dbrand', chanType:'digital_brand', market:'Qatar', owner:'growth',
       label:'Digital Branding',
-      vals:[0,0,0,0,0,0,0,0],
+      vals:[0,0,0,0,0,0,0,0,0],
       type:'cancelled', leverNote:'Cancelled (c5) — toggle c5 off to restore spend' },
 
     // ══════════════════════════════════════════════════════════════════
-    // MIKE — B2B & PR  (Central / All Markets — evenly across 8 months)
+    // MIKE — B2B & PR  (Central / All Markets — evenly across 9 months)
     // Base vals computed dynamically from b12-b15 inputs via buildNonGrowthVals()
     // ══════════════════════════════════════════════════════════════════
     { id:'mike_b2b_events',   chanType:'b2b_events',   market:'Central', owner:'mike',
       label:'B2B Events',
-      vals:[0,0,0,0,0,0,0,0], srcInput:'b12',
+      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b12',
       type:'active',    leverNote:'mc1: savings toggle' },
     { id:'mike_b2b_giveaways',chanType:'b2b_giveaways',market:'Central', owner:'mike',
       label:'B2B Giveaways',
-      vals:[0,0,0,0,0,0,0,0], srcInput:'b13',
+      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b13',
       type:'active',    leverNote:'mc3: savings toggle' },
     { id:'mike_b2b_digital',  chanType:'b2b_digital',  market:'Central', owner:'mike',
       label:'B2B Digital',
-      vals:[0,0,0,0,0,0,0,0], srcInput:'b14',
+      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b14',
       type:'cancelled', leverNote:'Consolidated into Events' },
     { id:'mike_pr',           chanType:'pr',           market:'Central', owner:'mike',
       label:'Public Relations',
-      vals:[0,0,0,0,0,0,0,0], srcInput:'b15',
+      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b15',
       type:'active',    leverNote:'mc2: savings toggle' },
 
     // ══════════════════════════════════════════════════════════════════
@@ -882,19 +889,19 @@ const MONTHLY_DATA = {
     // ══════════════════════════════════════════════════════════════════
     { id:'alex_social',       chanType:'social',       market:'Central', owner:'alex',
       label:'Social Media & Content',
-      vals:[0,0,0,0,0,0,0,0], srcInput:'b16',
+      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b16',
       type:'active',    leverNote:'ac1: savings toggle' },
     { id:'alex_b2c_giveaways',chanType:'b2c_giveaways',market:'Central', owner:'alex',
       label:'B2C Giveaways',
-      vals:[0,0,0,0,0,0,0,0], srcInput:'b17',
+      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b17',
       type:'active',    leverNote:'' },
     { id:'alex_creative',     chanType:'creative',     market:'Central', owner:'alex',
       label:'Creative Agency (Media Unit)',
-      vals:[0,0,0,0,0,0,0,0], srcInput:'b18',
+      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b18',
       type:'active',    leverNote:'' },
     { id:'alex_survey',       chanType:'survey',       market:'Central', owner:'alex',
       label:'Survey',
-      vals:[0,0,0,0,0,0,0,0], srcInput:'b19',
+      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b19',
       type:'cancelled', leverNote:'ac3: fully cancelled' },
   ],
   countries: [
@@ -910,7 +917,7 @@ const MONTHLY_DATA = {
 // ── REBUILD NON-GROWTH MONTHLY VALS FROM INPUTS ────────────
 // Mike/Alex channels have srcInput linking them to editable b12-b19 fields.
 // Their vals are recomputed each recalc() from the current input values,
-// evenly distributed across 8 months. Confirmed savings reduce the vals.
+// evenly distributed across 9 months (Apr-Dec). Confirmed savings reduce the vals.
 function rebuildNonGrowthVals() {
   var chMap = {};
   MONTHLY_DATA.channels.forEach(function(ch) { chMap[ch.id] = ch; });
@@ -937,10 +944,10 @@ function rebuildNonGrowthVals() {
     // Allocate net proportionally across lines (by gross weight)
     lineIds.forEach(function(id, idx) {
       var lineNet = grossTotal > 0 ? netTotal * (gross[id] / grossTotal) : 0;
-      var perMonth = lineNet / 8;
+      var perMonth = lineNet / 9;
       var ch = chMap[id];
-      for (var m = 0; m < 7; m++) ch.vals[m] = Math.round(perMonth);
-      ch.vals[7] = Math.max(0, Math.round(lineNet) - Math.round(perMonth) * 7);
+      for (var m = 0; m < 8; m++) ch.vals[m] = Math.round(perMonth);
+      ch.vals[8] = Math.max(0, Math.round(lineNet) - Math.round(perMonth) * 8);
     });
   }
 
@@ -961,30 +968,30 @@ function rebuildNonGrowthVals() {
   );
 }
 
-// ── JAN–APR / MAY–DEC SPLIT ────────────────────────────────
-// Sum of all MONTHLY_DATA channel vals = the uncommitted May–Dec base.
-// Jan–Apr consumed = Annual budget – Confirmed savings – May–Dec base.
-// NOTE: MAY_DEC_BASE only counts growth channels (non-growth are dynamic)
-const MAY_DEC_BASE = MONTHLY_DATA.channels.filter(function(ch){ return ch.owner==='growth'; }).reduce(function(s, ch){ return s + ch.vals.reduce(function(a,b){return a+b;},0); }, 0);
-// MAY_DEC_BASE = $14,839,218 (computed at runtime from MONTHLY_DATA)
+// ── JAN–MAR / APR–DEC SPLIT ────────────────────────────────
+// Sum of all MONTHLY_DATA channel vals = the uncommitted Apr–Dec base.
+// Jan–Mar consumed = Annual budget – Confirmed savings – Apr–Dec base.
+// NOTE: APR_DEC_BASE only counts growth channels (non-growth are dynamic)
+const APR_DEC_BASE = MONTHLY_DATA.channels.filter(function(ch){ return ch.owner==='growth'; }).reduce(function(s, ch){ return s + ch.vals.reduce(function(a,b){return a+b;},0); }, 0);
+// APR_DEC_BASE = $16,544,647 (computed at runtime from MONTHLY_DATA)
 
 // ── CONFIRMED SAVING REVERSAL EFFECTS ──────────────────────
-// When a confirmed saving is toggled OFF, these effects restore spend to May–Dec monthly values.
-// c1 is Jan–Mar period only — no May–Dec channel effect when reversed.
-// c2: Spafax/Emirates — restores evenly across all 8 months to uae_spafax
-// c3: UAE Offline Branding — saving covers Apr–Dec (9 months); May–Dec = 8/9 of total
-// c4: UAE Digital Branding Q2 — saving covers Apr–Jun; May and Jun only (months 0 & 1 in array)
-// c5: Qatar Digital Branding — restores evenly across all 8 months to qat_dbrand
+// When a confirmed saving is toggled OFF, these effects restore spend to Apr–Dec monthly values.
+// c1 is Jan–Mar period only — no Apr–Dec channel effect when reversed.
+// c2: Spafax/Emirates — restores May–Dec only (Apr had 1 final payment already consumed); indices 1-8
+// c3: UAE Offline Branding — saving covers Apr–Dec (9 months); restore evenly across all 9
+// c4: UAE Digital Branding Q2 — saving covers Apr–Jun; indices 0, 1, 2 in array
+// c5: Qatar Digital Branding — restores evenly across all 9 months to qat_dbrand
 // SPAFAX_MONTHLY_GROSS: the gross monthly contract rate = annual / 12.
 // Used for May–Dec restoration in CONF_EFFECTS — the 3 payments already made (Feb, Mar, Apr)
-// at the gross rate are absorbed into Jan–Apr consumed; only May–Dec (8 months) remain to restore.
+// at the gross rate are absorbed into Jan–Mar consumed; only May–Dec (8 months) remain to restore.
 const SPAFAX_MONTHLY_GROSS = Math.round(2257080 / 12); // $188,090/month (gross rate, not derived from net saving)
 
 const CONF_EFFECTS = {
-  2: { id:'uae_spafax',  deltaFn: _v => new Array(8).fill(SPAFAX_MONTHLY_GROSS) }, // gross rate: $188,090/month × 8
-  3: { id:'uae_offline', deltaFn: v => new Array(8).fill(v / 9) },
-  4: { id:'uae_dbrand',  deltaFn: v => { const d = new Array(8).fill(0); d[0] = v / 3; d[1] = v / 3; return d; } },
-  5: { id:'qat_dbrand',  deltaFn: v => new Array(8).fill(v / 8) },
+  2: { id:'uae_spafax',  deltaFn: _v => { const d = new Array(9).fill(SPAFAX_MONTHLY_GROSS); d[0] = 0; return d; } }, // gross rate: $188,090/month × 8 (May–Dec only; Apr final payment consumed)
+  3: { id:'uae_offline', deltaFn: v => new Array(9).fill(v / 9) },
+  4: { id:'uae_dbrand',  deltaFn: v => { const d = new Array(9).fill(0); d[0] = v / 3; d[1] = v / 3; d[2] = v / 3; return d; } },
+  5: { id:'qat_dbrand',  deltaFn: v => new Array(9).fill(v / 9) },
 };
 
 // ── FILTER STATE & DISPLAY MODE ─────────────────────────────
@@ -1018,11 +1025,11 @@ function buildAdjustedVals() {
   const adj = {};
   MONTHLY_DATA.channels.forEach(ch => { adj[ch.id] = [...ch.vals]; });
 
-  // Lever 1: UAE Digital Branding Q3 (months 2,3,4 = Jul,Aug,Sep)
+  // Lever 1: UAE Digital Branding Q3 (months 3,4,5 = Jul,Aug,Sep)
   if (document.getElementById('lev1-cb').checked) {
     const savings = n('lev1-base') * (parseFloat(document.getElementById('lev1-pct').value)||0) / 100;
     const perMonth = savings / 3;
-    [2,3,4].forEach(m => { adj['uae_dbrand'][m] = Math.max(0, adj['uae_dbrand'][m] - perMonth); });
+    [3,4,5].forEach(m => { adj['uae_dbrand'][m] = Math.max(0, adj['uae_dbrand'][m] - perMonth); });
   }
 
   // Lever 2: KSA exit (all months, proportional across ksa_perf + ksa_app)
@@ -1045,24 +1052,24 @@ function buildAdjustedVals() {
     }
   }
 
-  // Lever 4: UAE Criteo/RTB House — deducted from Performance (evenly across all 8 months)
+  // Lever 4: UAE Criteo/RTB House — deducted from Performance (evenly across all 9 months)
   if (document.getElementById('lev4-cb').checked) {
     const savings = n('lev4-base') * (parseFloat(document.getElementById('lev4-pct').value)||0) / 100;
-    const perMonth = savings / 8;
+    const perMonth = savings / 9;
     adj['uae_perf'].forEach((v,m) => { adj['uae_perf'][m] = Math.max(0, v - perMonth); });
   }
 
-  // Lever 5: UAE Digital Branding Q4 (months 5,6,7 = Oct,Nov,Dec)
+  // Lever 5: UAE Digital Branding Q4 (months 6,7,8 = Oct,Nov,Dec)
   if (document.getElementById('lev5-cb').checked) {
     const savings = n('lev5-base') * (parseFloat(document.getElementById('lev5-pct').value)||0) / 100;
     const perMonth = savings / 3;
-    [5,6,7].forEach(m => { adj['uae_dbrand'][m] = Math.max(0, adj['uae_dbrand'][m] - perMonth); });
+    [6,7,8].forEach(m => { adj['uae_dbrand'][m] = Math.max(0, adj['uae_dbrand'][m] - perMonth); });
   }
 
-  // Lever 6: UAE Performance Core Buy (evenly across all 8 months)
+  // Lever 6: UAE Performance Core Buy (evenly across all 9 months)
   if (document.getElementById('lev6-cb').checked) {
     const savings = n('lev6-base') * (parseFloat(document.getElementById('lev6-pct').value)||0) / 100;
-    const perMonth = savings / 8;
+    const perMonth = savings / 9;
     adj['uae_perf'].forEach((v,m) => { adj['uae_perf'][m] = Math.max(0, v - perMonth); });
   }
 
@@ -1071,7 +1078,7 @@ function buildAdjustedVals() {
   for (let ci = 1; ci <= CONF_COUNT; ci++) {
     if (document.getElementById('ci'+ci+'-cb').checked) continue; // still confirmed → no restoration
     const effect = CONF_EFFECTS[ci];
-    if (!effect) continue; // c1 has no May–Dec channel effect
+    if (!effect) continue; // c1 has no Apr–Dec channel effect
     const v = parseFloat(document.getElementById('c'+ci).value.replace(/,/g,'')) || 0;
     const delta = effect.deltaFn(v);
     delta.forEach((d, m) => { if (adj[effect.id] !== undefined) adj[effect.id][m] += d; });
@@ -1086,8 +1093,8 @@ const CANCELLED_IDS = new Set(['uae_offline','uae_spafax','mike_b2b_digital','al
 
 function getBaseCellClass(chId, mIdx) {
   if (chId === 'uae_offline') return 'cell-cut';
-  if (chId === 'uae_dbrand' && mIdx <= 1) return 'cell-cut';
-  if (chId === 'uae_dbrand' && mIdx >= 2) return 'cell-lever';
+  if (chId === 'uae_dbrand' && mIdx <= 2) return 'cell-cut';
+  if (chId === 'uae_dbrand' && mIdx >= 3) return 'cell-lever';
   if (LEVER_CHANNEL_IDS.has(chId)) return 'cell-lever';
   if (CANCELLED_IDS.has(chId)) return 'cell-cut';
   return 'cell-active';
@@ -1133,8 +1140,8 @@ function buildMonthlyTables() {
   // ── CHANNEL TABLE — grouped by market ───────────────────────
   const ctbody = document.getElementById('channel-tbody');
   ctbody.innerHTML = '';
-  const grandBase = new Array(8).fill(0);
-  const grandAdj  = new Array(8).fill(0);
+  const grandBase = new Array(9).fill(0);
+  const grandAdj  = new Array(9).fill(0);
 
   // Build market → channels map
   const mktGroups = {};
@@ -1157,11 +1164,11 @@ function buildMonthlyTables() {
     htr.className = 'market-header';
     const mktLabel = isCentral ? 'Central — B2B, PR, Social & Creative' : market;
     const mktNote = isCentral ? '<span style="font-size:10px;font-weight:400;opacity:0.65;margin-left:6px">Mike (B2B/PR) + Alex (Social/Content)</span>' : (isEst ? '<span style="font-size:10px;font-weight:400;opacity:0.65;margin-left:6px">channel splits estimated</span>' : '');
-    htr.innerHTML = `<td colspan="10">${mktLabel}${mktNote}</td>`;
+    htr.innerHTML = `<td colspan="11">${mktLabel}${mktNote}</td>`;
     ctbody.appendChild(htr);
 
-    const mktBase = new Array(8).fill(0);
-    const mktAdj  = new Array(8).fill(0);
+    const mktBase = new Array(9).fill(0);
+    const mktAdj  = new Array(9).fill(0);
 
     // Channel rows (indented)
     mChans.forEach(ch => {
@@ -1226,14 +1233,14 @@ function buildMonthlyTables() {
   // ── COUNTRY TABLE ───────────────────────────────────────
   const ctbody2 = document.getElementById('country-tbody');
   ctbody2.innerHTML = '';
-  const cGrandBase = new Array(8).fill(0);
-  const cGrandAdj  = new Array(8).fill(0);
+  const cGrandBase = new Array(9).fill(0);
+  const cGrandAdj  = new Array(9).fill(0);
 
   MONTHLY_DATA.countries.forEach(country => {
     if (!filterState.country[country.label]) return;
 
-    const baseAgg = new Array(8).fill(0);
-    const adjAgg  = new Array(8).fill(0);
+    const baseAgg = new Array(9).fill(0);
+    const adjAgg  = new Array(9).fill(0);
     let hasLever = false;
 
     country.ids.forEach(id => {
@@ -1376,22 +1383,22 @@ function recalc() {
     document.getElementById('lev'+i+'-chip').textContent = on ? fmt(sav) : '$0';
     if (on) { totalLevers += sav; activeCount++; }
   }
-  // Ahmed derived May–Dec values
-  const janAprConsumed = Math.max(0, totalBudget - totalConfirmed - MAY_DEC_BASE);
-  const netMayDec      = Math.max(0, MAY_DEC_BASE - totalLevers);
-  const leverPctOfBase = MAY_DEC_BASE > 0 ? totalLevers / MAY_DEC_BASE * 100 : 0;
+  // Ahmed derived Apr–Dec values
+  const janMarConsumed = Math.max(0, totalBudget - totalConfirmed - APR_DEC_BASE);
+  const netAprDec      = Math.max(0, APR_DEC_BASE - totalLevers);
+  const leverPctOfBase = APR_DEC_BASE > 0 ? totalLevers / APR_DEC_BASE * 100 : 0;
 
   // ── MIKE — B2B & PR ──
-  const mikeMayDec = ['b12','b13','b14','b15'].reduce((s,id)=>s+n(id),0);
-  const mikeJanApr = n('m_janapr');
-  const mikeAnnual = mikeMayDec + mikeJanApr;
+  const mikeAprDec = ['b12','b13','b14','b15'].reduce((s,id)=>s+n(id),0);
+  const mikeJanMar = n('m_janapr');
+  const mikeAnnual = mikeAprDec + mikeJanMar;
   let mikeConfirmed = 0;
   for (let i=1;i<=4;i++) if (document.getElementById('mci'+i+'-cb').checked) mikeConfirmed += n('mc'+i);
 
   // ── ALEX — Social/Content/Creative ──
-  const alexMayDec = ['b16','b17','b18','b19'].reduce((s,id)=>s+n(id),0);
-  const alexJanApr = n('a_janapr');
-  const alexAnnual = alexMayDec + alexJanApr;
+  const alexAprDec = ['b16','b17','b18','b19'].reduce((s,id)=>s+n(id),0);
+  const alexJanMar = n('a_janapr');
+  const alexAnnual = alexAprDec + alexJanMar;
   let alexConfirmed = 0;
   for (let i=1;i<=3;i++) if (document.getElementById('aci'+i+'-cb').checked) alexConfirmed += n('ac'+i);
 
@@ -1399,39 +1406,39 @@ function recalc() {
 
   // ── FULL MARKETING GROUP TOTALS ──
   const totalAllBudget = totalBudget + mikeAnnual + alexAnnual;
-  const totalJanAprAll = janAprConsumed + mikeJanApr + alexJanApr;
-  const totalMayDecAll = MAY_DEC_BASE + mikeMayDec + alexMayDec;
-  const netMayDecAll   = netMayDec + mikeMayDec + alexMayDec;
+  const totalJanMarAll = janMarConsumed + mikeJanMar + alexJanMar;
+  const totalAprDecAll = APR_DEC_BASE + mikeAprDec + alexAprDec;
+  const netAprDecAll   = netAprDec + mikeAprDec + alexAprDec;
 
   // Bar chart percentages (of full marketing annual budget)
-  const consumedPct = totalAllBudget > 0 ? totalJanAprAll    / totalAllBudget * 100 : 0;
+  const consumedPct = totalAllBudget > 0 ? totalJanMarAll    / totalAllBudget * 100 : 0;
   const confPctBar  = totalAllBudget > 0 ? totalAllConfirmed / totalAllBudget * 100 : 0;
   const levPctBar   = totalAllBudget > 0 ? totalLevers       / totalAllBudget * 100 : 0;
-  const netPctBar   = totalAllBudget > 0 ? netMayDecAll      / totalAllBudget * 100 : 0;
+  const netPctBar   = totalAllBudget > 0 ? netAprDecAll      / totalAllBudget * 100 : 0;
 
   // ── SUMMARY STRIP ──
   document.getElementById('ss-budget').textContent       = fmt(totalAllBudget);
-  document.getElementById('ss-consumed').textContent     = fmt(totalJanAprAll);
-  document.getElementById('ss-maydec').textContent       = fmt(totalMayDecAll);
+  document.getElementById('ss-consumed').textContent     = fmt(totalJanMarAll);
+  document.getElementById('ss-maydec').textContent       = fmt(totalAprDecAll);
   document.getElementById('ss-levers').textContent       = fmt(totalAllConfirmed + totalLevers);
   document.getElementById('ss-levers-sub').textContent   = activeCount===0
     ? 'Confirmed all teams · no extra levers'
     : 'Confirmed all teams + '+activeCount+' lever'+(activeCount>1?'s':'')+' active';
-  document.getElementById('ss-net').textContent          = fmt(netMayDecAll);
+  document.getElementById('ss-net').textContent          = fmt(netAprDecAll);
   document.getElementById('ss-net-sub').textContent      = activeCount===0 ? 'No levers active · full base' : fmt(totalLevers)+' saved from levers';
 
   // ── RIGHT PANEL ──
-  document.getElementById('r-remaining').textContent           = fmt(netMayDecAll);
+  document.getElementById('r-remaining').textContent           = fmt(netAprDecAll);
   document.getElementById('r-budget').textContent              = fmt(totalAllBudget);
   document.getElementById('r-ahmed-total').textContent         = fmt(totalBudget);
   document.getElementById('r-mike-total').textContent          = fmt(mikeAnnual);
   document.getElementById('r-alex-total').textContent          = fmt(alexAnnual);
   document.getElementById('r-mikeAlex-confirmed').textContent  = fmt(mikeConfirmed + alexConfirmed);
-  document.getElementById('r-consumed').textContent            = fmt(totalJanAprAll);
-  document.getElementById('r-maydec').textContent              = fmt(totalMayDecAll);
+  document.getElementById('r-consumed').textContent            = fmt(totalJanMarAll);
+  document.getElementById('r-maydec').textContent              = fmt(totalAprDecAll);
   document.getElementById('r-confirmed').textContent           = fmt(totalAllConfirmed);
   document.getElementById('r-levers').textContent              = fmt(totalLevers);
-  document.getElementById('r-total-savings').textContent       = fmt(netMayDecAll);
+  document.getElementById('r-total-savings').textContent       = fmt(netAprDecAll);
   document.getElementById('r-pct').textContent                 = leverPctOfBase.toFixed(1)+'%';
   const planTarget = 9400000;
   const toGo = planTarget - totalAllConfirmed - totalLevers;
@@ -1538,11 +1545,11 @@ function buildExportData() {
   // Rebuild non-growth vals and adjusted vals to get current state
   rebuildNonGrowthVals();
   var adj = buildAdjustedVals();
-  var months = ['May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var months = ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var rows = [];
 
   // Header row
-  rows.push(['Team','Market','Channel'].concat(months).concat(['May-Dec Total']));
+  rows.push(['Team','Market','Channel'].concat(months).concat(['Apr-Dec Total']));
 
   var OWNER_LABELS = { growth:'Growth Marketing (Ahmed)', mike:'B2B & PR (Mike)', alex:'Social/Content/Creative (Alex)' };
   var OWNER_ORDER = ['growth','mike','alex'];
@@ -1575,7 +1582,7 @@ function buildExportData() {
   });
 
   // Grand total row
-  var grandTotals = new Array(8).fill(0);
+  var grandTotals = new Array(9).fill(0);
   MONTHLY_DATA.channels.forEach(function(ch) {
     var dispVals = displayMode === 'levers' ? adj[ch.id] : ch.vals;
     dispVals.forEach(function(v, i) { grandTotals[i] += Math.round(v); });
@@ -1640,14 +1647,14 @@ function exportXLSX() {
     // Column widths
     ws['!cols'] = [
       {wch:30}, {wch:12}, {wch:26},
-      {wch:12},{wch:12},{wch:12},{wch:12},{wch:12},{wch:12},{wch:12},{wch:12},
+      {wch:12},{wch:12},{wch:12},{wch:12},{wch:12},{wch:12},{wch:12},{wch:12},{wch:12},
       {wch:16}
     ];
 
-    // Number format for dollar columns (columns D through L = indices 3-11)
+    // Number format for dollar columns (columns D through M = indices 3-12)
     var range = XLSX.utils.decode_range(ws['!ref']);
     for (var r = 1; r <= range.e.r; r++) {
-      for (var c = 3; c <= 11; c++) {
+      for (var c = 3; c <= 12; c++) {
         var addr = XLSX.utils.encode_cell({r:r, c:c});
         if (ws[addr] && typeof ws[addr].v === 'number') {
           ws[addr].z = '#,##0';
