@@ -191,7 +191,10 @@ input:checked + .slider-sw::before { transform: translateX(16px); }
 .monthly-table tr.savings-row td { font-size:11px; color:var(--green); background:var(--light-green); border-top:1px dashed #9AD4B8; font-style:italic; }
 .monthly-table tr.savings-row td:first-child { font-style:normal; font-weight:600; }
 .monthly-table tr.market-header td { background:#EEEDF6; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--purple); padding:8px 12px; border-top:2px solid #C8C3E0; }
+.monthly-table tr.market-header.central-header td { background:#E8F5EE; color:var(--green); border-top:3px solid var(--green); }
 .monthly-table tr.market-subtotal td { background:#E4E1F0; font-weight:700; color:var(--purple); border-top:1px solid #C8C3E0; font-size:12px; }
+.monthly-table tr.market-subtotal.central-subtotal td { background:#D5EDDF; color:var(--green); border-top:1px solid #7DC9A0; }
+.monthly-table tr.central-row td { background:#F7FBF9; }
 .monthly-table td.indented { padding-left:24px; }
 
 /* Cell states */
@@ -525,12 +528,13 @@ input:checked + .slider-sw::before { transform: translateX(16px); }
     <div class="filter-bar">
       <div class="filter-group">
         <span class="filter-group-label">Countries:</span>
-        <button class="fchip on" id="fc-UAE"     onclick="toggleFilter('country','UAE')">UAE</button>
-        <button class="fchip on" id="fc-Egypt"   onclick="toggleFilter('country','Egypt')">Egypt</button>
-        <button class="fchip on" id="fc-Qatar"   onclick="toggleFilter('country','Qatar')">Qatar</button>
-        <button class="fchip on" id="fc-Bahrain" onclick="toggleFilter('country','Bahrain')">Bahrain</button>
-        <button class="fchip on" id="fc-KSA"     onclick="toggleFilter('country','KSA')">KSA</button>
-        <button class="fchip on" id="fc-Central" onclick="toggleFilter('country','Central')">Central</button>
+        <button class="fchip on" id="fc-UAE"          onclick="toggleFilter('country','UAE')">UAE</button>
+        <button class="fchip on" id="fc-Egypt"        onclick="toggleFilter('country','Egypt')">Egypt</button>
+        <button class="fchip on" id="fc-Qatar"        onclick="toggleFilter('country','Qatar')">Qatar</button>
+        <button class="fchip on" id="fc-Bahrain"      onclick="toggleFilter('country','Bahrain')">Bahrain</button>
+        <button class="fchip on" id="fc-KSA"          onclick="toggleFilter('country','KSA')">KSA</button>
+        <button class="fchip on green" id="fc-B2B"    onclick="toggleFilter('country','B2B')">B2B</button>
+        <button class="fchip on green" id="fc-PR & Social" onclick="toggleFilter('country','PR & Social')">PR & Social</button>
       </div>
     </div>
     <div class="monthly-card">
@@ -555,16 +559,28 @@ input:checked + .slider-sw::before { transform: translateX(16px); }
   <div id="view-channel" style="display:none">
     <div class="filter-bar" style="flex-direction:column;align-items:flex-start;gap:10px">
       <div class="filter-group">
-        <span class="filter-group-label">Markets:</span>
+        <span class="filter-group-label">Growth Markets:</span>
         <button class="fchip on" id="fcm-UAE"     onclick="toggleFilter('chanMarket','UAE')">UAE</button>
         <button class="fchip on" id="fcm-Egypt"   onclick="toggleFilter('chanMarket','Egypt')">Egypt</button>
         <button class="fchip on" id="fcm-Qatar"   onclick="toggleFilter('chanMarket','Qatar')">Qatar</button>
         <button class="fchip on" id="fcm-Bahrain" onclick="toggleFilter('chanMarket','Bahrain')">Bahrain</button>
         <button class="fchip on" id="fcm-KSA"     onclick="toggleFilter('chanMarket','KSA')">KSA</button>
-        <button class="fchip on" id="fcm-Central" onclick="toggleFilter('chanMarket','Central')">Central</button>
       </div>
       <div class="filter-group">
-        <span class="filter-group-label">Growth:</span>
+        <span class="filter-group-label">B2B Markets:</span>
+        <button class="fchip on green" id="fcm-B2B UAE"     onclick="toggleFilter('chanMarket','B2B UAE')">UAE Core</button>
+        <button class="fchip on green" id="fcm-B2B Qatar"   onclick="toggleFilter('chanMarket','B2B Qatar')">Qatar</button>
+        <button class="fchip on green" id="fcm-B2B Bahrain" onclick="toggleFilter('chanMarket','B2B Bahrain')">Bahrain</button>
+        <button class="fchip on green" id="fcm-B2B Egypt"   onclick="toggleFilter('chanMarket','B2B Egypt')">Egypt</button>
+      </div>
+      <div class="filter-group">
+        <span class="filter-group-label">PR & Social:</span>
+        <button class="fchip on green" id="fcm-PR Social UAE"   onclick="toggleFilter('chanMarket','PR Social UAE')">UAE</button>
+        <button class="fchip on green" id="fcm-PR Social MF"    onclick="toggleFilter('chanMarket','PR Social MF')">MF</button>
+        <button class="fchip on green" id="fcm-PR Social Egypt"  onclick="toggleFilter('chanMarket','PR Social Egypt')">Egypt</button>
+      </div>
+      <div class="filter-group">
+        <span class="filter-group-label">Channels:</span>
         <button class="fchip on clay" id="fct-performance"   onclick="toggleFilter('chanType','performance')">Performance</button>
         <button class="fchip on clay" id="fct-app"           onclick="toggleFilter('chanType','app')">App</button>
         <button class="fchip on clay" id="fct-digital_brand" onclick="toggleFilter('chanType','digital_brand')">Digital Brand</button>
@@ -572,24 +588,12 @@ input:checked + .slider-sw::before { transform: translateX(16px); }
         <button class="fchip on clay" id="fct-mf"            onclick="toggleFilter('chanType','mf')">Mortgage Finder</button>
         <button class="fchip on clay" id="fct-np"            onclick="toggleFilter('chanType','np')">New Projects</button>
         <button class="fchip on clay" id="fct-spafax"        onclick="toggleFilter('chanType','spafax')">Spafax / Emirates</button>
-      </div>
-      <div class="filter-group">
-        <span class="filter-group-label">B2B & PR:</span>
-        <button class="fchip on green" id="fct-b2b_events"    onclick="toggleFilter('chanType','b2b_events')">B2B Events</button>
-        <button class="fchip on green" id="fct-b2b_giveaways" onclick="toggleFilter('chanType','b2b_giveaways')">B2B Giveaways</button>
-        <button class="fchip on green" id="fct-b2b_digital"   onclick="toggleFilter('chanType','b2b_digital')">B2B Digital</button>
-        <button class="fchip on green" id="fct-pr"            onclick="toggleFilter('chanType','pr')">PR</button>
-      </div>
-      <div class="filter-group">
-        <span class="filter-group-label">Social & Creative:</span>
-        <button class="fchip on green" id="fct-social"         onclick="toggleFilter('chanType','social')">Social/Content</button>
-        <button class="fchip on green" id="fct-b2c_giveaways"  onclick="toggleFilter('chanType','b2c_giveaways')">B2C Giveaways</button>
-        <button class="fchip on green" id="fct-creative"       onclick="toggleFilter('chanType','creative')">Creative Agency</button>
-        <button class="fchip on green" id="fct-survey"         onclick="toggleFilter('chanType','survey')">Survey</button>
+        <button class="fchip on green" id="fct-b2b"          onclick="toggleFilter('chanType','b2b')">B2B</button>
+        <button class="fchip on green" id="fct-pr_social"    onclick="toggleFilter('chanType','pr_social')">PR & Social</button>
       </div>
     </div>
     <div class="monthly-card">
-      <div class="monthly-card-head"><div class="dot" style="background:var(--clay)"></div>Full Marketing Group — Planned Monthly Spend by Channel — May through December 2026<span style="margin-left:auto;font-size:11px;color:var(--muted);font-weight:400">Growth + B2B/PR + Social/Creative · All teams</span></div>
+      <div class="monthly-card-head"><div class="dot" style="background:var(--clay)"></div>Full Marketing Group — Planned Monthly Spend by Channel — April through December 2026<span style="margin-left:auto;font-size:11px;color:var(--muted);font-weight:400">Growth + B2B/PR + Social/Creative · All teams</span></div>
       <table class="monthly-table" id="channel-table">
         <thead><tr>
           <th>Channel / Market</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th class="total-col">Apr–Dec Total</th>
@@ -864,45 +868,136 @@ const MONTHLY_DATA = {
       type:'cancelled', leverNote:'Cancelled (c5) — toggle c5 off to restore spend' },
 
     // ══════════════════════════════════════════════════════════════════
-    // MIKE — B2B & PR  (Central / All Markets — evenly across 9 months)
-    // Base vals computed dynamically from b12-b15 inputs via buildNonGrowthVals()
+    // MIKE — B2B  (detailed line items from Marketing Leavers Aligned)
+    // Values are "after cuts" monthly plan from source spreadsheet
     // ══════════════════════════════════════════════════════════════════
-    { id:'mike_b2b_events',   chanType:'b2b_events',   market:'Central', owner:'mike',
+    // ── B2B — UAE Core ──
+    { id:'b2b_uae_cust_eng',    chanType:'b2b', market:'B2B UAE', owner:'mike',
+      label:'Customer Engagement',
+      vals:[10000,14000,23500,2000,12000,24000,64000,2000,0],
+      type:'active',    leverNote:'Diamond, Ruby, Emerald, Admin Events, Abu Dhabi & NE' },
+    { id:'b2b_uae_new_biz',     chanType:'b2b', market:'B2B UAE', owner:'mike',
+      label:'New Business',
+      vals:[0,4000,4000,21000,4000,11000,21000,4000,4000],
+      type:'active',    leverNote:'Partner Hub, Acquisition Event' },
+    { id:'b2b_uae_sig_events',  chanType:'b2b', market:'B2B UAE', owner:'mike',
+      label:'Signature Events',
+      vals:[0,0,0,0,0,0,0,600000,0],
+      type:'active',    leverNote:'PF Awards · PF Connect cancelled' },
+    { id:'b2b_uae_agent_eng',   chanType:'b2b', market:'B2B UAE', owner:'mike',
+      label:'Agent Engagement',
+      vals:[5000,5000,15000,5000,5000,20000,10000,30000,20000],
+      type:'active',    leverNote:'PF Agent Hours, Top Closers, After Hours' },
+    { id:'b2b_uae_sales_en',    chanType:'b2b', market:'B2B UAE', owner:'mike',
+      label:'Sales Enablement',
+      vals:[2083,2083,2083,2083,2083,2083,2083,2083,2083],
+      type:'active',    leverNote:'PF Edge · One Voice cancelled' },
+    { id:'b2b_uae_prod_mkt',    chanType:'b2b', market:'B2B UAE', owner:'mike',
+      label:'Product Marketing',
+      vals:[7900,7500,12900,7500,12900,7500,12900,7500,7500],
+      type:'active',    leverNote:'Videos, GTMS & Activations' },
+    { id:'b2b_uae_misc',        chanType:'b2b', market:'B2B UAE', owner:'mike',
+      label:'Miscellaneous',
+      vals:[4167,4167,4167,4167,4167,4167,4167,4167,4167],
+      type:'active',    leverNote:'Give Aways, Others' },
+    { id:'b2b_uae_academy',     chanType:'b2b', market:'B2B UAE', owner:'mike',
+      label:'PF Academy',
+      vals:[4167,4167,4167,4167,4167,4167,4167,4167,4167],
+      type:'active',    leverNote:'' },
+    // ── B2B — Qatar ──
+    { id:'b2b_qat_events',      chanType:'b2b', market:'B2B Qatar', owner:'mike',
       label:'B2B Events',
-      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b12',
-      type:'active',    leverNote:'mc1: savings toggle' },
-    { id:'mike_b2b_giveaways',chanType:'b2b_giveaways',market:'Central', owner:'mike',
+      vals:[5699,2274,0,2677,273,30528,5077,0,0],
+      type:'active',    leverNote:'' },
+    { id:'b2b_qat_giveaways',   chanType:'b2b', market:'B2B Qatar', owner:'mike',
       label:'B2B Giveaways',
-      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b13',
-      type:'active',    leverNote:'mc3: savings toggle' },
-    { id:'mike_b2b_digital',  chanType:'b2b_digital',  market:'Central', owner:'mike',
-      label:'B2B Digital',
-      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b14',
-      type:'cancelled', leverNote:'Consolidated into Events' },
-    { id:'mike_pr',           chanType:'pr',           market:'Central', owner:'mike',
-      label:'Public Relations',
-      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b15',
-      type:'active',    leverNote:'mc2: savings toggle' },
+      vals:[0,0,0,0,5500,0,0,5500,0],
+      type:'active',    leverNote:'' },
+    // ── B2B — Bahrain ──
+    { id:'b2b_bhr_events',      chanType:'b2b', market:'B2B Bahrain', owner:'mike',
+      label:'B2B Events',
+      vals:[2500,4742,2500,5177,6500,4300,7577,2500,2500],
+      type:'active',    leverNote:'' },
+    { id:'b2b_bhr_giveaways',   chanType:'b2b', market:'B2B Bahrain', owner:'mike',
+      label:'B2B Giveaways',
+      vals:[286,0,2000,2000,0,1000,0,2000,0],
+      type:'active',    leverNote:'' },
+    // ── B2B — Egypt ──
+    { id:'b2b_egy_events',      chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'B2B Events',
+      vals:[11050,13983,5050,2083,6550,583,12550,11483,583],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_bab',         chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'BAB',
+      vals:[0,2400,0,0,0,0,0,0,0],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_pfworks_nc',  chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'PF Works — New Cairo',
+      vals:[0,0,0,0,0,0,10000,0,0],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_pfworks_z',   chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'PF Works — Zayed',
+      vals:[6000,0,0,0,0,0,0,0,0],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_spark',       chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'PF Spark',
+      vals:[0,6000,0,0,0,0,0,0,0],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_awards',      chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'PF Awards Int.',
+      vals:[0,0,0,0,0,0,0,8400,0],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_agent_eng',   chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'Agent Engagement',
+      vals:[0,2500,0,0,2500,0,0,2500,0],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_mkt_camp',    chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'B2B Marketing Campaign',
+      vals:[1500,1500,1500,1500,1500,0,0,0,0],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_content',     chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'B2B Content & Social',
+      vals:[583,583,583,583,583,583,583,583,583],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_giveaways_m', chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'Giveaways',
+      vals:[1967,0,1967,0,1967,0,1967,0,0],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_extras',      chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'Extras & Adhocs',
+      vals:[1000,1000,1000,0,0,0,0,0,0],
+      type:'active',    leverNote:'' },
+    { id:'b2b_egy_giveaways',   chanType:'b2b', market:'B2B Egypt', owner:'mike',
+      label:'B2B Giveaways',
+      vals:[0,9372,9372,9372,1594,9372,9372,9372,0],
+      type:'active',    leverNote:'' },
 
     // ══════════════════════════════════════════════════════════════════
-    // ALEX — Social, Content & Creative  (Central / All Markets)
+    // ALEX — PR & Social  (detailed line items from Marketing Leavers)
     // ══════════════════════════════════════════════════════════════════
-    { id:'alex_social',       chanType:'social',       market:'Central', owner:'alex',
-      label:'Social Media & Content',
-      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b16',
-      type:'active',    leverNote:'ac1: savings toggle' },
-    { id:'alex_b2c_giveaways',chanType:'b2c_giveaways',market:'Central', owner:'alex',
+    // ── PR & Social — UAE ──
+    { id:'pr_uae_content',       chanType:'pr_social', market:'PR Social UAE', owner:'alex',
+      label:'B2C Content',
+      vals:[49796,49796,58796,49796,49796,58796,49796,49796,58799],
+      type:'active',    leverNote:'Grid, Blog, Studio, Influencers, Assembly' },
+    { id:'pr_uae_giveaways',     chanType:'pr_social', market:'PR Social UAE', owner:'alex',
       label:'B2C Giveaways',
-      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b17',
+      vals:[917,917,917,917,917,917,917,917,913],
       type:'active',    leverNote:'' },
-    { id:'alex_creative',     chanType:'creative',     market:'Central', owner:'alex',
-      label:'Creative Agency (Media Unit)',
-      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b18',
+    { id:'pr_uae_pr',            chanType:'pr_social', market:'PR Social UAE', owner:'alex',
+      label:'B2C Public Relations',
+      vals:[23925,23925,23925,23925,23925,23925,23925,23925,23926],
+      type:'active',    leverNote:'Gambit retainer, Events/PR, Media Giveaways' },
+    // ── PR & Social — MF ──
+    { id:'pr_mf_content',        chanType:'pr_social', market:'PR Social MF', owner:'alex',
+      label:'B2C Content',
+      vals:[4000,4000,4000,2000,2000,4000,2000,2000,4000],
       type:'active',    leverNote:'' },
-    { id:'alex_survey',       chanType:'survey',       market:'Central', owner:'alex',
-      label:'Survey',
-      vals:[0,0,0,0,0,0,0,0,0], srcInput:'b19',
-      type:'cancelled', leverNote:'ac3: fully cancelled' },
+    // ── PR & Social — Egypt ──
+    { id:'pr_egy_content',       chanType:'pr_social', market:'PR Social Egypt', owner:'alex',
+      label:'B2C Content',
+      vals:[6347,6347,5883,8824,8824,9478,2794,2794,2794],
+      type:'active',    leverNote:'Grid, Production, Influencers' },
   ],
   countries: [
     { label:'UAE',     ids:['uae_perf','uae_app','uae_dbrand','uae_offline','uae_mf','uae_np','uae_spafax'] },
@@ -910,7 +1005,8 @@ const MONTHLY_DATA = {
     { label:'Qatar',   ids:['qat_perf','qat_app','qat_dbrand'] },
     { label:'Bahrain', ids:['bhr_perf','bhr_app'] },
     { label:'KSA',     ids:['ksa_perf','ksa_app'] },
-    { label:'Central', ids:['mike_b2b_events','mike_b2b_giveaways','mike_b2b_digital','mike_pr','alex_social','alex_b2c_giveaways','alex_creative','alex_survey'] },
+    { label:'B2B',     ids:['b2b_uae_cust_eng','b2b_uae_new_biz','b2b_uae_sig_events','b2b_uae_agent_eng','b2b_uae_sales_en','b2b_uae_prod_mkt','b2b_uae_misc','b2b_uae_academy','b2b_qat_events','b2b_qat_giveaways','b2b_bhr_events','b2b_bhr_giveaways','b2b_egy_events','b2b_egy_bab','b2b_egy_pfworks_nc','b2b_egy_pfworks_z','b2b_egy_spark','b2b_egy_awards','b2b_egy_agent_eng','b2b_egy_mkt_camp','b2b_egy_content','b2b_egy_giveaways_m','b2b_egy_extras','b2b_egy_giveaways'] },
+    { label:'PR & Social', ids:['pr_uae_content','pr_uae_giveaways','pr_uae_pr','pr_mf_content','pr_egy_content'] },
   ]
 };
 
@@ -919,53 +1015,9 @@ const MONTHLY_DATA = {
 // Their vals are recomputed each recalc() from the current input values,
 // evenly distributed across 9 months (Apr-Dec). Confirmed savings reduce the vals.
 function rebuildNonGrowthVals() {
-  var chMap = {};
-  MONTHLY_DATA.channels.forEach(function(ch) { chMap[ch.id] = ch; });
-
-  // Helper: distribute a team's net budget proportionally across its lines
-  function distributeTeam(lineIds, srcIds, savCbs, savIds) {
-    // Gross totals per line
-    var gross = {};
-    var grossTotal = 0;
-    lineIds.forEach(function(id, idx) {
-      var v = n(srcIds[idx]);
-      gross[id] = v;
-      grossTotal += v;
-    });
-
-    // Total confirmed savings for this team
-    var totalSavings = 0;
-    savCbs.forEach(function(cb, idx) {
-      if (document.getElementById(cb).checked) totalSavings += n(savIds[idx]);
-    });
-
-    var netTotal = Math.max(0, grossTotal - totalSavings);
-
-    // Allocate net proportionally across lines (by gross weight)
-    lineIds.forEach(function(id, idx) {
-      var lineNet = grossTotal > 0 ? netTotal * (gross[id] / grossTotal) : 0;
-      var perMonth = lineNet / 9;
-      var ch = chMap[id];
-      for (var m = 0; m < 8; m++) ch.vals[m] = Math.round(perMonth);
-      ch.vals[8] = Math.max(0, Math.round(lineNet) - Math.round(perMonth) * 8);
-    });
-  }
-
-  // Mike: b12-b15 budget lines, mc1-mc4 confirmed savings
-  distributeTeam(
-    ['mike_b2b_events','mike_b2b_giveaways','mike_b2b_digital','mike_pr'],
-    ['b12','b13','b14','b15'],
-    ['mci1-cb','mci2-cb','mci3-cb','mci4-cb'],
-    ['mc1','mc2','mc3','mc4']
-  );
-
-  // Alex: b16-b19 budget lines, ac1-ac3 confirmed savings
-  distributeTeam(
-    ['alex_social','alex_b2c_giveaways','alex_creative','alex_survey'],
-    ['b16','b17','b18','b19'],
-    ['aci1-cb','aci2-cb','aci3-cb'],
-    ['ac1','ac2','ac3']
-  );
+  // Non-growth channel vals are now pre-computed from the "Marketing Leavers Final Aligned"
+  // spreadsheet — no dynamic recomputation needed. The Decisions tab summary (Mike/Alex)
+  // operates independently from these fixed monthly values.
 }
 
 // ── JAN–MAR / APR–DEC SPLIT ────────────────────────────────
@@ -996,11 +1048,12 @@ const CONF_EFFECTS = {
 
 // ── FILTER STATE & DISPLAY MODE ─────────────────────────────
 const filterState = {
-  country:    { UAE:true, Egypt:true, Qatar:true, Bahrain:true, KSA:true, Central:true },
-  chanMarket: { UAE:true, Egypt:true, Qatar:true, Bahrain:true, KSA:true, Central:true },
+  country:    { UAE:true, Egypt:true, Qatar:true, Bahrain:true, KSA:true, 'B2B':true, 'PR & Social':true },
+  chanMarket: { UAE:true, Egypt:true, Qatar:true, Bahrain:true, KSA:true,
+                'B2B UAE':true, 'B2B Qatar':true, 'B2B Bahrain':true, 'B2B Egypt':true,
+                'PR Social UAE':true, 'PR Social MF':true, 'PR Social Egypt':true },
   chanType:   { performance:true, app:true, digital_brand:true, offline:true, mf:true, np:true, spafax:true,
-                b2b_events:true, b2b_giveaways:true, b2b_digital:true, pr:true,
-                social:true, b2c_giveaways:true, creative:true, survey:true }
+                b2b:true, pr_social:true }
 };
 let displayMode = 'levers'; // 'base' or 'levers'
 
@@ -1089,7 +1142,7 @@ function buildAdjustedVals() {
 
 // ── CELL STYLING ────────────────────────────────────────────
 const LEVER_CHANNEL_IDS = new Set(['qat_perf','qat_app','bhr_perf','bhr_app','ksa_perf','ksa_app']);
-const CANCELLED_IDS = new Set(['uae_offline','uae_spafax','mike_b2b_digital','alex_survey']);
+const CANCELLED_IDS = new Set(['uae_offline','uae_spafax']);
 
 function getBaseCellClass(chId, mIdx) {
   if (chId === 'uae_offline') return 'cell-cut';
@@ -1149,21 +1202,34 @@ function buildMonthlyTables() {
     if (!mktGroups[ch.market]) mktGroups[ch.market] = [];
     mktGroups[ch.market].push(ch);
   });
-  const MARKET_ORDER = ['UAE', 'Egypt', 'Qatar', 'Bahrain', 'KSA', 'Central'];
+  const MARKET_ORDER = ['UAE', 'Egypt', 'Qatar', 'Bahrain', 'KSA',
+    'B2B UAE', 'B2B Qatar', 'B2B Bahrain', 'B2B Egypt',
+    'PR Social UAE', 'PR Social MF', 'PR Social Egypt'];
 
   MARKET_ORDER.forEach(market => {
     if (!filterState.chanMarket[market]) return;
     const mChans = (mktGroups[market]||[]).filter(ch => filterState.chanType[ch.chanType]);
     if (!mChans.length) return;
 
-    const isEst = market !== 'UAE' && market !== 'Central';
-    const isCentral = market === 'Central';
+    const isEst = ['Egypt','Qatar','Bahrain','KSA'].includes(market);
+    const isB2B = market.startsWith('B2B');
+    const isPR  = market.startsWith('PR Social');
+    const isNonGrowth = isB2B || isPR;
+
+    // Market header labels
+    const MARKET_LABELS = {
+      'B2B UAE':'B2B — UAE Core', 'B2B Qatar':'B2B — Qatar', 'B2B Bahrain':'B2B — Bahrain', 'B2B Egypt':'B2B — Egypt',
+      'PR Social UAE':'PR & Social — UAE', 'PR Social MF':'PR & Social — MF', 'PR Social Egypt':'PR & Social — Egypt'
+    };
 
     // Market header row
     const htr = document.createElement('tr');
-    htr.className = 'market-header';
-    const mktLabel = isCentral ? 'Central — B2B, PR, Social & Creative' : market;
-    const mktNote = isCentral ? '<span style="font-size:10px;font-weight:400;opacity:0.65;margin-left:6px">Mike (B2B/PR) + Alex (Social/Content)</span>' : (isEst ? '<span style="font-size:10px;font-weight:400;opacity:0.65;margin-left:6px">channel splits estimated</span>' : '');
+    htr.className = isNonGrowth ? 'market-header central-header' : 'market-header';
+    const mktLabel = MARKET_LABELS[market] || market;
+    let mktNote = '';
+    if (isB2B)  mktNote = '<span style="font-size:10px;font-weight:400;opacity:0.75;margin-left:6px">Mike — aligned plan after savings</span>';
+    if (isPR)   mktNote = '<span style="font-size:10px;font-weight:400;opacity:0.75;margin-left:6px">Alex — aligned plan after savings</span>';
+    if (isEst)  mktNote = '<span style="font-size:10px;font-weight:400;opacity:0.65;margin-left:6px">channel splits estimated</span>';
     htr.innerHTML = `<td colspan="11">${mktLabel}${mktNote}</td>`;
     ctbody.appendChild(htr);
 
@@ -1184,6 +1250,7 @@ function buildMonthlyTables() {
       });
       cells += `<td class="cell-total">$${rowTotal.toLocaleString('en-US')}</td>`;
       const tr = document.createElement('tr');
+      if (isNonGrowth) tr.className = 'central-row';
       tr.innerHTML = cells;
       ctbody.appendChild(tr);
     });
@@ -1192,8 +1259,8 @@ function buildMonthlyTables() {
     const mktDisp  = displayMode==='levers' ? mktAdj : mktBase;
     const mktTotal = mktDisp.reduce((a,b)=>a+b,0);
     const str = document.createElement('tr');
-    str.className = 'market-subtotal';
-    let stCells = `<td>${market} Subtotal</td>`;
+    str.className = isNonGrowth ? 'market-subtotal central-subtotal' : 'market-subtotal';
+    let stCells = `<td>${MARKET_LABELS[market] || market} Subtotal</td>`;
     mktDisp.forEach(v => { stCells += `<td>$${v.toLocaleString('en-US')}</td>`; });
     stCells += `<td>$${mktTotal.toLocaleString('en-US')}</td>`;
     str.innerHTML = stCells;
@@ -1260,7 +1327,8 @@ function buildMonthlyTables() {
     if (country.label === 'Qatar')   note = '<div style="font-size:10px;color:var(--muted);font-weight:400;margin-top:1px">Subject to Lever #3 (partial reduction)</div>';
     if (country.label === 'Bahrain') note = '<div style="font-size:10px;color:var(--muted);font-weight:400;margin-top:1px">Subject to Lever #3 (partial reduction)</div>';
     if (country.label === 'KSA')     note = '<div style="font-size:10px;color:var(--muted);font-weight:400;margin-top:1px">Subject to Lever #2 (exit)</div>';
-    if (country.label === 'Central') note = '<div style="font-size:10px;color:var(--muted);font-weight:400;margin-top:1px">B2B/PR (Mike) + Social/Content/Creative (Alex) — net of confirmed savings</div>';
+    if (country.label === 'B2B')          note = '<div style="font-size:10px;color:var(--muted);font-weight:400;margin-top:1px">Mike — B2B across all markets (aligned plan after savings)</div>';
+    if (country.label === 'PR & Social')  note = '<div style="font-size:10px;color:var(--muted);font-weight:400;margin-top:1px">Alex — PR & Social across all markets (aligned plan after savings)</div>';
 
     let cells = `<td>${country.label}${note}</td>`;
     dispAgg.forEach((v, mi) => {
@@ -1551,9 +1619,11 @@ function buildExportData() {
   // Header row
   rows.push(['Team','Market','Channel'].concat(months).concat(['Apr-Dec Total']));
 
-  var OWNER_LABELS = { growth:'Growth Marketing (Ahmed)', mike:'B2B & PR (Mike)', alex:'Social/Content/Creative (Alex)' };
+  var OWNER_LABELS = { growth:'Growth Marketing (Ahmed)', mike:'B2B (Mike)', alex:'PR & Social (Alex)' };
   var OWNER_ORDER = ['growth','mike','alex'];
-  var MKT_ORDER = ['UAE','Egypt','Qatar','Bahrain','KSA','Central'];
+  var MKT_ORDER = ['UAE','Egypt','Qatar','Bahrain','KSA',
+    'B2B UAE','B2B Qatar','B2B Bahrain','B2B Egypt',
+    'PR Social UAE','PR Social MF','PR Social Egypt'];
 
   // Group channels by owner then market
   OWNER_ORDER.forEach(function(owner) {
